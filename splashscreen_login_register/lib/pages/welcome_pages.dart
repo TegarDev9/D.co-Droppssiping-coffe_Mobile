@@ -11,6 +11,8 @@ class _WellcomePageState extends State<WellcomePage> {
   bool _isHiddenPassword = true;
   bool _isHiddenConfirmPassword = true;
 
+  bool _isChecked = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,21 +23,21 @@ class _WellcomePageState extends State<WellcomePage> {
           padding: EdgeInsets.symmetric(horizontal: defaultMargin),
           children: [
             Image.asset('assets/images/login.png',
-                height: 380, fit: BoxFit.fill),
+                height: 428, fit: BoxFit.fill),
             SizedBox(
               height: 15,
             ),
             Text(
               "Welcome",
               style: dangerTextStyle.copyWith(
-                  color: brownColor, fontWeight: FontWeight.w700),
+                  color: brownColor, fontSize: 30, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center,
             ),
             SizedBox(
               height: 15,
             ),
             Text(
-              "Lorem ipsum dolor sit amet, \nconsectetur adipiscing elit, \nsed do eiusmod",
+              "We offer a complete dropshipping service for you. \nThis means that we roast, pick and ship your order.",
               style: dangerTextStyle.copyWith(color: brownColor, fontSize: 16),
               textAlign: TextAlign.center,
             ),
@@ -84,22 +86,38 @@ class _WellcomePageState extends State<WellcomePage> {
                                                         CrossAxisAlignment
                                                             .start,
                                                     children: [
-                                                      Text(
-                                                        "Hello",
-                                                        style: dangerTextStyle
-                                                            .copyWith(
-                                                                fontSize: 20,
-                                                                color:
-                                                                    dangerColor),
+                                                      Text.rich(
+                                                        TextSpan(
+                                                          text: 'This is ',
+                                                          style: dangerTextStyle
+                                                              .copyWith(
+                                                                  fontSize: 28,
+                                                                  color:
+                                                                      dangerColor),
+                                                          children: <TextSpan>[
+                                                            TextSpan(
+                                                              text:
+                                                                  'Dropshipper Coffee',
+                                                              style: dangerTextStyle.copyWith(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize: 28,
+                                                                  color:
+                                                                      dangerColor),
+                                                            )
+                                                            // can add more TextSpans here...
+                                                          ],
+                                                        ),
                                                       ),
                                                       Text(
-                                                        "Register",
+                                                        "Sign up to Continue",
                                                         style: dangerTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .bold,
-                                                                fontSize: 30,
+                                                                        .w700,
+                                                                fontSize: 14,
                                                                 color:
                                                                     dangerColor),
                                                       ),
@@ -127,6 +145,12 @@ class _WellcomePageState extends State<WellcomePage> {
                                               ),
 
                                               TextField(
+                                                  style:
+                                                      dangerTextStyle.copyWith(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontSize: 14,
+                                                          color: dangerColor),
                                                   decoration: InputDecoration(
                                                       border:
                                                           OutlineInputBorder(
@@ -145,6 +169,12 @@ class _WellcomePageState extends State<WellcomePage> {
                                               ),
 
                                               TextField(
+                                                  style:
+                                                      dangerTextStyle.copyWith(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontSize: 14,
+                                                          color: dangerColor),
                                                   decoration: InputDecoration(
                                                       border:
                                                           OutlineInputBorder(
@@ -163,6 +193,12 @@ class _WellcomePageState extends State<WellcomePage> {
                                               ),
 
                                               TextField(
+                                                  style:
+                                                      dangerTextStyle.copyWith(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontSize: 14,
+                                                          color: dangerColor),
                                                   decoration: InputDecoration(
                                                       border:
                                                           OutlineInputBorder(
@@ -181,6 +217,12 @@ class _WellcomePageState extends State<WellcomePage> {
                                               ),
 
                                               TextField(
+                                                  style:
+                                                      dangerTextStyle.copyWith(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontSize: 14,
+                                                          color: dangerColor),
                                                   decoration: InputDecoration(
                                                       border:
                                                           OutlineInputBorder(
@@ -199,6 +241,12 @@ class _WellcomePageState extends State<WellcomePage> {
                                               ),
 
                                               TextField(
+                                                  style:
+                                                      dangerTextStyle.copyWith(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontSize: 14,
+                                                          color: dangerColor),
                                                   decoration: InputDecoration(
                                                       border:
                                                           OutlineInputBorder(
@@ -214,7 +262,7 @@ class _WellcomePageState extends State<WellcomePage> {
                                                           child: Icon(Icons
                                                               .lock_outline)))),
                                               SizedBox(
-                                                height: 9,
+                                                height: 29,
                                               ),
 
                                               Container(
@@ -258,7 +306,7 @@ class _WellcomePageState extends State<WellcomePage> {
                                                     CrossAxisAlignment.center,
                                                 children: [
                                                   Text("Already have account? ",
-                                                      style: whiteTextStyle
+                                                      style: dangerTextStyle
                                                           .copyWith(
                                                               color:
                                                                   dangerColor,
@@ -269,8 +317,11 @@ class _WellcomePageState extends State<WellcomePage> {
                                                   Text("Login",
                                                       style: whiteTextStyle
                                                           .copyWith(
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .underline,
                                                               color:
-                                                                  primaryColor,
+                                                                  yellowColor,
                                                               fontSize: 14,
                                                               fontWeight:
                                                                   FontWeight
@@ -347,22 +398,38 @@ class _WellcomePageState extends State<WellcomePage> {
                                                         CrossAxisAlignment
                                                             .start,
                                                     children: [
-                                                      Text(
-                                                        "Hello",
-                                                        style: dangerTextStyle
-                                                            .copyWith(
-                                                                fontSize: 20,
-                                                                color:
-                                                                    dangerColor),
+                                                      Text.rich(
+                                                        TextSpan(
+                                                          text: 'This is ',
+                                                          style: dangerTextStyle
+                                                              .copyWith(
+                                                                  fontSize: 28,
+                                                                  color:
+                                                                      dangerColor),
+                                                          children: <TextSpan>[
+                                                            TextSpan(
+                                                              text:
+                                                                  'Dropshipper Coffee',
+                                                              style: dangerTextStyle.copyWith(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize: 28,
+                                                                  color:
+                                                                      dangerColor),
+                                                            )
+                                                            // can add more TextSpans here...
+                                                          ],
+                                                        ),
                                                       ),
                                                       Text(
-                                                        "Login",
+                                                        "Sign in to Continue",
                                                         style: dangerTextStyle
                                                             .copyWith(
                                                                 fontWeight:
                                                                     FontWeight
-                                                                        .bold,
-                                                                fontSize: 30,
+                                                                        .w700,
+                                                                fontSize: 14,
                                                                 color:
                                                                     dangerColor),
                                                       ),
@@ -390,6 +457,12 @@ class _WellcomePageState extends State<WellcomePage> {
                                               ),
 
                                               TextField(
+                                                  style:
+                                                      dangerTextStyle.copyWith(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontSize: 14,
+                                                          color: dangerColor),
                                                   decoration: InputDecoration(
                                                       border:
                                                           OutlineInputBorder(
@@ -408,6 +481,12 @@ class _WellcomePageState extends State<WellcomePage> {
                                               ),
 
                                               TextField(
+                                                  style:
+                                                      dangerTextStyle.copyWith(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontSize: 14,
+                                                          color: dangerColor),
                                                   decoration: InputDecoration(
                                                       border:
                                                           OutlineInputBorder(
@@ -422,7 +501,58 @@ class _WellcomePageState extends State<WellcomePage> {
                                                           child: Icon(Icons
                                                               .lock_outline)))),
                                               SizedBox(
-                                                height: 9,
+                                                height: 14,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Container(
+                                                    width: 20,
+                                                    height: 20,
+                                                    decoration: BoxDecoration(
+                                                        border: Border.all(
+                                                            color: dangerColor,
+                                                            width: 3),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5)),
+                                                    child: Checkbox(
+                                                      value: _isChecked,
+                                                      checkColor:
+                                                          Color(0xFFbf814e),
+                                                      onChanged: (value) {
+                                                        setState(() {
+                                                          this._isChecked =
+                                                              value!;
+                                                        });
+                                                      },
+                                                    ),
+                                                  ),
+                                                  SizedBox(width: 5),
+                                                  Text("Remember me",
+                                                      style: dangerTextStyle
+                                                          .copyWith(
+                                                              color:
+                                                                  dangerColor,
+                                                              fontSize: 12,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold)),
+                                                  Spacer(),
+                                                  Text(
+                                                    "Forgot your password ?",
+                                                    style: dangerTextStyle
+                                                        .copyWith(
+                                                            color: dangerColor,
+                                                            fontSize: 12,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                  )
+                                                ],
+                                              ),
+
+                                              SizedBox(
+                                                height: 14,
                                               ),
 
                                               Container(
@@ -477,8 +607,11 @@ class _WellcomePageState extends State<WellcomePage> {
                                                   Text("Sign up",
                                                       style: whiteTextStyle
                                                           .copyWith(
+                                                              decoration:
+                                                                  TextDecoration
+                                                                      .underline,
                                                               color:
-                                                                  primaryColor,
+                                                                  yellowColor,
                                                               fontSize: 14,
                                                               fontWeight:
                                                                   FontWeight
@@ -518,7 +651,7 @@ class _WellcomePageState extends State<WellcomePage> {
             Text(
               'All Right Reserved @2022',
               textAlign: TextAlign.center,
-              style: dangerTextStyle.copyWith(color: brownColor, fontSize: 11),
+              style: dangerTextStyle.copyWith(color: brownColor, fontSize: 14),
             ),
             SizedBox(
               height: defaultMargin,
