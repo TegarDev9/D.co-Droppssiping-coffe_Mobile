@@ -310,7 +310,196 @@ class _WellcomePageState extends State<WellcomePage> {
                 height: 60,
                 width: MediaQuery.of(context).size.width - 2 * defaultMargin,
                 child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (context) {
+                            return StatefulBuilder(
+                              builder:
+                                  (BuildContext context, StateSetter setState) {
+                                return Wrap(
+                                  children: [
+                                    // BAGIAN MODAL
+                                    Container(
+                                      color: Colors.transparent,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: secondaryColor,
+                                            borderRadius: BorderRadius.only(
+                                                topRight: Radius.circular(40),
+                                                topLeft: Radius.circular(40))),
+                                        child: Container(
+                                          margin: EdgeInsets.symmetric(
+                                              horizontal: defaultMargin),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              // JARAK
+                                              SizedBox(
+                                                height: 25,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        "Hello",
+                                                        style: dangerTextStyle
+                                                            .copyWith(
+                                                                fontSize: 20,
+                                                                color:
+                                                                    dangerColor),
+                                                      ),
+                                                      Text(
+                                                        "Login",
+                                                        style: dangerTextStyle
+                                                            .copyWith(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 30,
+                                                                color:
+                                                                    dangerColor),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Spacer(),
+                                                  Center(
+                                                    child: InkWell(
+                                                      onTap: () {
+                                                        // KETIKA ICON DI TEKAN
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: Image.asset(
+                                                        'assets/images/close.png',
+                                                        height: 24,
+                                                        width: 24,
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+
+                                              SizedBox(
+                                                height: 25,
+                                              ),
+
+                                              TextField(
+                                                  decoration: InputDecoration(
+                                                      border:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(30),
+                                                      ),
+                                                      hintText:
+                                                          "Enter your username",
+                                                      labelText: "Username",
+                                                      suffixIcon: InkWell(
+                                                          child: Icon(Icons
+                                                              .person_outline)))),
+                                              SizedBox(
+                                                height: 9,
+                                              ),
+
+                                              TextField(
+                                                  decoration: InputDecoration(
+                                                      border:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(30),
+                                                      ),
+                                                      hintText:
+                                                          "Your password must be at least 6 characters",
+                                                      labelText: "Password",
+                                                      suffixIcon: InkWell(
+                                                          child: Icon(Icons
+                                                              .lock_outline)))),
+                                              SizedBox(
+                                                height: 9,
+                                              ),
+
+                                              Container(
+                                                  height: 51,
+                                                  width: MediaQuery.of(context)
+                                                          .size
+                                                          .width -
+                                                      2 * defaultMargin,
+                                                  child: ElevatedButton(
+                                                      onPressed: () {},
+                                                      child: Text(
+                                                        'Login',
+                                                        style: whiteTextStyle
+                                                            .copyWith(
+                                                                fontSize: 16,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                color:
+                                                                    primaryColor),
+                                                      ),
+                                                      style: ElevatedButton.styleFrom(
+                                                          primary: dangerColor,
+                                                          shape: RoundedRectangleBorder(
+                                                              side: BorderSide(
+                                                                  color:
+                                                                      dangerColor,
+                                                                  width: 3),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          30))))),
+
+                                              SizedBox(
+                                                height: 9,
+                                              ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Text("Don't have account? ",
+                                                      style: whiteTextStyle
+                                                          .copyWith(
+                                                              color:
+                                                                  dangerColor,
+                                                              fontSize: 14,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700)),
+                                                  Text("Sign up",
+                                                      style: whiteTextStyle
+                                                          .copyWith(
+                                                              color:
+                                                                  primaryColor,
+                                                              fontSize: 14,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700))
+                                                ],
+                                              ),
+
+                                              SizedBox(
+                                                height: defaultMargin,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                );
+                              },
+                            );
+                          });
+                    },
                     child: Text(
                       'Login',
                       style: whiteTextStyle.copyWith(
