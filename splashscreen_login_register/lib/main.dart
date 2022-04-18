@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_register/pages/dashboard.dart';
 import 'package:login_register/pages/pages.dart';
 import 'package:login_register/shared/shared.dart';
 
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
         canvasColor: Colors.transparent,
       ),
       home: WellcomePage(),
+      routes: {
+        '/dashboard': (context) => MainPage(),
+      },
     );
   }
 }

@@ -272,7 +272,11 @@ class _WellcomePageState extends State<WellcomePage> {
                                                           .width -
                                                       2 * defaultMargin,
                                                   child: ElevatedButton(
-                                                      onPressed: () {},
+                                                      onPressed: () {
+                                                        Navigator.pushNamed(
+                                                            context,
+                                                            '/dashboard');
+                                                      },
                                                       child: Text(
                                                         'Register',
                                                         style: whiteTextStyle
@@ -562,7 +566,11 @@ class _WellcomePageState extends State<WellcomePage> {
                                                           .width -
                                                       2 * defaultMargin,
                                                   child: ElevatedButton(
-                                                      onPressed: () {},
+                                                      onPressed: () {
+                                                        Navigator.pushNamed(
+                                                            context,
+                                                            '/dashboard');
+                                                      },
                                                       child: Text(
                                                         'Login',
                                                         style: whiteTextStyle
