@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_register/pages/Drawwer.dart';
 import 'package:login_register/shared/shared.dart';
 
 class MainPage extends StatelessWidget {
@@ -60,9 +61,8 @@ class MainPage extends StatelessWidget {
       backgroundColor: primaryColor,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: custumBottomNav(),
-      body: Center(
-        child: Text('Dashboard'),
-      ),
+      body: Image.asset('assets/images/Rectangle_11.png'),
+      drawer: DrawerScreen(),
     );
   }
 }
