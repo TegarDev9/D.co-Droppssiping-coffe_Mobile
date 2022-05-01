@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   Text(
                     'WELCOME, D.O Kyungsoo',
-                    style: dangerTextStyle.copyWith(
+                    style: nameTextStyle.copyWith(
                       fontSize: 24,
                     ),
                   ),
