@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:login_register/shared/shared.dart';
+import 'package:login_register/widget/product_card.dart';
+import 'package:login_register/widget/product_card1.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget header() {
       return Container(
-        margin: EdgeInsets.only(
-            top: defaultMargin, left: defaultMargin, right: defaultMargin),
+        margin:
+            EdgeInsets.only(top: 5, left: defaultMargin, right: defaultMargin),
         child: Row(
           children: [
             Expanded(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
                     'WELCOME, D.O Kyungsoo',
@@ -143,11 +145,38 @@ class HomePage extends StatelessWidget {
       );
     }
 
+    Widget popularProducts() {
+      return Container(
+        margin: EdgeInsets.only(top: 10),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(children: [
+            SizedBox(
+              width: defaultMargin,
+            ),
+            Row(
+              children: [
+                ProductCard(),
+                ProductCard1(),
+                ProductCard(),
+                ProductCard1(),
+              ],
+            ),
+          ]),
+        ),
+      );
+    }
+
     return ListView(
       children: [
-        Image.asset('assets/images/Rectangle_11.png'),
+        Image.asset(
+          'assets/images/Rectangle_11.png',
+          width: 50,
+          height: 200,
+        ),
         header(),
         categories(),
+        popularProducts(),
       ],
     );
   }
