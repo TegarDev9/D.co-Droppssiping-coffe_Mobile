@@ -24,6 +24,10 @@ TextStyle primaryTextStyle = GoogleFonts.poppins(
 TextStyle nameTextStyle = GoogleFonts.sacramento(
     fontSize: 28, color: dangerColor, fontWeight: FontWeight.w400);
 
+TextStyle treeTextStyle = GoogleFonts.poppins(
+  color: treeColor,
+);
+
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;
 FontWeight medium = FontWeight.w500;

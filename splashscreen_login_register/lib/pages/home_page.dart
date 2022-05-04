@@ -1,28 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:login_register/shared/shared.dart';
+import 'package:login_register/widget/Product_tile.dart';
 import 'package:login_register/widget/product_card.dart';
 import 'package:login_register/widget/product_card1.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget header() {
+    Widget Appbar() {
       return Container(
-        margin:
-            EdgeInsets.only(top: 5, left: defaultMargin, right: defaultMargin),
+        margin: EdgeInsets.only(
+            top: defaultMargin, left: defaultMargin, right: defaultMargin),
         child: Row(
           children: [
             Expanded(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'WELCOME, D.O Kyungsoo',
+                    'WELCOME,  D.O Kyungsoo',
                     style: nameTextStyle.copyWith(
-                      fontSize: 24,
+                      fontSize: 22,
+                      fontWeight: semiBold,
+                    ),
+                  ),
+                  Text(
+                    '@ D.O Kyungsoo',
+                    style: nameTextStyle.copyWith(
+                      fontSize: 20,
+                      fontWeight: semiBold,
                     ),
                   ),
                 ],
+              ),
+            ),
+            Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage(
+                    'assets/images/Mask.png',
+                  ),
+                ),
               ),
             ),
           ],
@@ -167,16 +188,47 @@ class HomePage extends StatelessWidget {
       );
     }
 
+    Widget TerfavoriteTile() {
+      return Container(
+        margin: EdgeInsets.only(
+          top: defaultMargin,
+          left: defaultMargin,
+          right: defaultMargin,
+        ),
+        child: Text(
+          'Terfavorite',
+          style: treeTextStyle.copyWith(
+            fontSize: 20,
+            fontWeight: semiBold,
+          ),
+        ),
+      );
+    }
+
+    Widget terfavorite() {
+      return Container(
+        margin: EdgeInsets.only(
+          top: 13,
+        ),
+        child: Column(
+          children: [
+            ProductTile(),
+            ProductTile(),
+            ProductTile(),
+            ProductTile(),
+          ],
+        ),
+      );
+    }
+
     return ListView(
       children: [
-        Image.asset(
-          'assets/images/Rectangle_11.png',
-          width: 50,
-          height: 200,
-        ),
-        header(),
+        Appbar(),
         categories(),
         popularProducts(),
+        TerfavoriteTile(),
+        terfavorite(),
+        ProductTile(),
       ],
     );
   }
