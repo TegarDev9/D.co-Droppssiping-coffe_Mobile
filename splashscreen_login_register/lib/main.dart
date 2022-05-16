@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:login_register/pages/dashboard.dart';
 import 'package:login_register/pages/detail_chat.dart';
 import 'package:login_register/pages/pages.dart';
+import 'package:login_register/pages/splash_page.dart';
 import 'package:login_register/shared/shared.dart';
 
 void main() {
@@ -20,8 +21,9 @@ class MyApp extends StatelessWidget {
         primaryColor: primaryColor,
         canvasColor: Colors.transparent,
       ),
-      home: WellcomePage(),
       routes: {
+        '/': (context) => SplashPage(),
+        '/welcome-pages': (context) => WellcomePage(),
         '/dashboard': (context) => MainPage(),
         '/detail-chat': (context) => DetailChatPage(),
       },
