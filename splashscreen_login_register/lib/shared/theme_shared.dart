@@ -14,6 +14,7 @@ Color yellowColor = Color(0xFFFFF500);
 Color primaryTextColor = Color(0xffF1F0F2);
 Color AppbarTextColor = Color(0xff7F6654);
 Color textchat = Color(0xff7F6654);
+Color buttonfavorite = Color(0xff372214);
 
 TextStyle dangerTextStyle = GoogleFonts.poppins(
     fontSize: 36, color: dangerColor, fontWeight: FontWeight.w500);
@@ -22,6 +23,10 @@ TextStyle whiteTextStyle = GoogleFonts.poppins(
 
 TextStyle whiteTextStyle2 = GoogleFonts.poppins(
     fontSize: 10, color: whiteColor, fontWeight: FontWeight.w500);
+
+TextStyle buttonfavorite1 = GoogleFonts.poppins(
+  color: buttonfavorite,
+);
 
 TextStyle primaryTextStyle = GoogleFonts.poppins(
   color: primaryTextColor,
