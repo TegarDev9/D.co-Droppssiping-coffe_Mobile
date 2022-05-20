@@ -18,7 +18,7 @@ class _DrawwerScreenState extends State<DrawerScreen> {
               accountName: Text("D.O Kyungsoo"),
               currentAccountPicture: CircleAvatar(
                   backgroundImage: AssetImage("assets/images/People.png")),
-              accountEmail: Text("@Kyungsoo_ya"),
+              accountEmail: Text("@kyungsoo_ya"),
             ),
             DrawerListTile(
               iconData: Icons.group_sharp,

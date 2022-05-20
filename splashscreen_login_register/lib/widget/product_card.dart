@@ -5,13 +5,17 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: 10,
+        vertical: 10,
+      ),
       width: 170,
       height: 210,
       margin: EdgeInsets.only(
         right: defaultMargin,
       ),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
         color: Color(0xff57361E),
       ),
       child: Column(
@@ -19,8 +23,7 @@ class ProductCard extends StatelessWidget {
         children: [
           Text(
             '4.6',
-            style: whiteTextStyle.copyWith(
-                fontSize: 12, fontWeight: FontWeight.w600),
+            style: whiteTextStyle.copyWith(fontSize: 10, fontWeight: medium),
             textAlign: TextAlign.left,
           ),
           Column(
@@ -28,26 +31,23 @@ class ProductCard extends StatelessWidget {
             children: [
               Image.asset(
                 'assets/images/product.png',
-                width: 130,
-                height: 130,
+                width: 120,
+                height: 120,
                 fit: BoxFit.cover,
               ),
             ],
           ),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
                   'Kopi Beras',
                   style: whiteTextStyle.copyWith(
-                    fontSize: 10,
+                    fontSize: 14,
                     fontWeight: semiBold,
                   ),
-                ),
-                SizedBox(
-                  height: 3,
+                  textAlign: TextAlign.left,
                 ),
                 Text(
                   'Rp 35.000,00',
@@ -65,8 +65,8 @@ class ProductCard extends StatelessWidget {
                   children: [
                     Image.asset(
                       'assets/images/favorite1.png',
-                      width: 15,
-                      height: 15,
+                      width: 20,
+                      height: 20,
                       fit: BoxFit.cover,
                     ),
                   ],

@@ -15,28 +15,24 @@ class HomePage extends StatelessWidget {
           children: [
             Expanded(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'WELCOME,  D.O Kyungsoo',
+                    'Welcome,  D.O Kyungsoo',
                     style: nameTextStyle.copyWith(
-                      fontSize: 22,
-                      fontWeight: semiBold,
-                    ),
-                  ),
-                  Text(
-                    '@ D.O Kyungsoo',
-                    style: nameTextStyle.copyWith(
-                      fontSize: 20,
-                      fontWeight: semiBold,
+                      fontSize: 28,
+                      fontWeight: regular,
                     ),
                   ),
                 ],
               ),
             ),
             Container(
-              width: 50,
-              height: 50,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+              width: 30,
+              height: 30,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
@@ -53,6 +49,7 @@ class HomePage extends StatelessWidget {
 
     Widget categories() {
       return Container(
+        height: 28,
         margin: EdgeInsets.only(
           top: defaultMargin,
         ),
@@ -65,29 +62,31 @@ class HomePage extends StatelessWidget {
               ),
               Container(
                 padding: EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
+                  horizontal: 20,
+                  vertical: 5,
                 ),
-                margin: EdgeInsets.only(right: 16),
+                margin: EdgeInsets.only(right: 9),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(30),
                   color: secondaryColor,
                 ),
                 child: Text(
-                  'Most Populer',
+                  'Most Popular',
                   style: primaryTextStyle.copyWith(
-                    fontSize: 13,
+                    fontSize: 12,
+                    fontWeight: semiBold,
                   ),
                 ),
               ),
               Container(
+                height: 28,
                 padding: EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
+                  horizontal: 20,
+                  vertical: 5,
                 ),
-                margin: EdgeInsets.only(right: 16),
+                margin: EdgeInsets.only(right: 9),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(30),
                   border: Border.all(
                     color: treeColor,
                   ),
@@ -96,58 +95,64 @@ class HomePage extends StatelessWidget {
                 child: Text(
                   'Best Seller',
                   style: primaryTextStyle.copyWith(
-                    fontSize: 13,
+                    fontSize: 12,
+                    fontWeight: semiBold,
                   ),
                 ),
               ),
               Container(
+                height: 28,
                 padding: EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
+                  horizontal: 20,
+                  vertical: 5,
                 ),
-                margin: EdgeInsets.only(right: 16),
+                margin: EdgeInsets.only(right: 9),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(30),
                   border: Border.all(
                     color: treeColor,
                   ),
                   color: treeColor,
                 ),
                 child: Text(
-                  'latest',
+                  'Latest',
                   style: primaryTextStyle.copyWith(
-                    fontSize: 13,
+                    fontSize: 12,
+                    fontWeight: semiBold,
                   ),
                 ),
               ),
               Container(
+                height: 28,
                 padding: EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
+                  horizontal: 20,
+                  vertical: 5,
                 ),
-                margin: EdgeInsets.only(right: 16),
+                margin: EdgeInsets.only(right: 9),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(30),
                   border: Border.all(
                     color: treeColor,
                   ),
                   color: treeColor,
                 ),
                 child: Text(
-                  'lawest price',
+                  'Lowest Price',
                   style: primaryTextStyle.copyWith(
-                    fontSize: 13,
+                    fontSize: 12,
+                    fontWeight: semiBold,
                   ),
                 ),
               ),
               Container(
+                height: 28,
                 padding: EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 10,
+                  horizontal: 20,
+                  vertical: 5,
                 ),
-                margin: EdgeInsets.only(right: 16),
+                margin: EdgeInsets.only(right: 9),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(30),
                   border: Border.all(
                     color: treeColor,
                   ),
@@ -156,7 +161,8 @@ class HomePage extends StatelessWidget {
                 child: Text(
                   'New Product',
                   style: primaryTextStyle.copyWith(
-                    fontSize: 13,
+                    fontSize: 12,
+                    fontWeight: semiBold,
                   ),
                 ),
               ),
@@ -196,10 +202,10 @@ class HomePage extends StatelessWidget {
           right: defaultMargin,
         ),
         child: Text(
-          'Terfavorite',
-          style: treeTextStyle.copyWith(
-            fontSize: 20,
-            fontWeight: semiBold,
+          'Most Favorite',
+          style: brownTextStyle.copyWith(
+            fontSize: 16,
+            fontWeight: bold,
           ),
         ),
       );

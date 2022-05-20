@@ -109,11 +109,11 @@ class _CollapsibleSideBarState extends State<CollapsibleSideBar> {
             onHoverPointer: SystemMouseCursors.click,
             onTitleTap: () {
               ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Dropshiper Coffe')));
+                  const SnackBar(content: Text('Dropshipper Coffee')));
             },
             showToggleButton: true,
             borderRadius: 30,
-            title: "Dropshiper Coffe",
+            title: "Dropshipper Coffee",
             titleBack: true,
             titleStyle: GoogleFonts.lato(fontSize: 22),
             unselectedIconColor: Color.fromARGB(97, 255, 255, 255),
