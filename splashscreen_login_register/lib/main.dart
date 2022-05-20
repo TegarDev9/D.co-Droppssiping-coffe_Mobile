@@ -4,6 +4,7 @@ import 'package:login_register/pages/detail_chat.dart';
 import 'package:login_register/pages/pages.dart';
 import 'package:login_register/pages/splash_page.dart';
 import 'package:login_register/shared/shared.dart';
+import 'package:login_register/widget/product_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/welcome-pages': (context) => WellcomePage(),
         '/dashboard': (context) => MainPage(),
         '/detail-chat': (context) => DetailChatPage(),
+        '/product': (context) => ProductPage(),
       },
     );
   }
