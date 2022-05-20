@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login_register/shared/shared.dart';
 import 'package:login_register/widget/Product_tile.dart';
+import 'package:login_register/widget/Product_tile2.dart';
 import 'package:login_register/widget/product_card.dart';
 import 'package:login_register/widget/product_card1.dart';
 
@@ -219,9 +220,9 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             ProductTile(),
+            ProductTile2(),
             ProductTile(),
-            ProductTile(),
-            ProductTile(),
+            ProductTile2(),
           ],
         ),
       );

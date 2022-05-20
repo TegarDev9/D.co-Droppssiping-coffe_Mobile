@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:login_register/shared/shared.dart';
 
-class ProductTile extends StatelessWidget {
+class ProductTile2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/product');
+        Navigator.pushNamed(context, '/product2');
       },
       child: Container(
         margin: EdgeInsets.only(
@@ -37,7 +37,7 @@ class ProductTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Kopi beras',
+                    'Kopi Robusta',
                     style: whiteTextStyle.copyWith(
                       fontSize: 14,
                     ),
@@ -46,7 +46,7 @@ class ProductTile extends StatelessWidget {
                     height: 2,
                   ),
                   Text(
-                    'kopi beras adalah biji kopi kering yang sudah dibuang kulit tanduk dan kulit arinya.',
+                    'kopi Kopi Robusta (nama Latin Coffea canephora atau Coffea robusta) merupakan keturunan beberapa spesies kopi, terutama Coffea canephora.',
                     style: primaryTextStyle.copyWith(
                       fontSize: 10,
                       fontWeight: semiBold,
