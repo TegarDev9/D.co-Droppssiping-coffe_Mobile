@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_register/pages/Drawwer.dart';
 import 'package:login_register/shared/shared.dart';
 import 'package:login_register/widget/Product_tile.dart';
 import 'package:login_register/widget/Product_tile2.dart';
@@ -14,6 +15,62 @@ class HomePage extends StatelessWidget {
             top: defaultMargin, left: defaultMargin, right: defaultMargin),
         child: Row(
           children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/Drawwer');
+              },
+              child: Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                ),
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: AssetImage(
+                      'assets/images/Bar_icon.png',
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 340,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset(
+                  'assets/images/seach_icon.png',
+                  width: 24,
+                  height: 24,
+                ),
+              ],
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Image.asset(
+                  'assets/images/shope_icon.png',
+                  width: 24,
+                  height: 24,
+                ),
+              ],
+            ),
+          ],
+        ),
+      );
+    }
+
+    Widget nama() {
+      return Container(
+        child: Row(
+          children: [
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -26,21 +83,6 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ],
-              ),
-            ),
-            Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-              ),
-              width: 30,
-              height: 30,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage(
-                    'assets/images/Mask.png',
-                  ),
-                ),
               ),
             ),
           ],
@@ -231,6 +273,7 @@ class HomePage extends StatelessWidget {
     return ListView(
       children: [
         Appbar(),
+        nama(),
         categories(),
         popularProducts(),
         TerfavoriteTile(),

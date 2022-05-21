@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_register/pages/Drawwer.dart';
 import 'package:login_register/pages/dashboard.dart';
 import 'package:login_register/pages/detail_chat.dart';
 import 'package:login_register/pages/pages.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         '/detail-chat': (context) => DetailChatPage(),
         '/product': (context) => ProductPage(),
         '/product2': (context) => ProductPage2(),
+        '/Drawwer': (context) => DrawerScreen(),
       },
     );
   }
