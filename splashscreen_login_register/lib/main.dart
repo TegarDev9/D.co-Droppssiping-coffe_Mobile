@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:login_register/pages/Drawwer.dart';
 import 'package:login_register/pages/cart_page.dart';
+import 'package:login_register/pages/checkout_page.dart';
+import 'package:login_register/pages/checkout_success_page.dart';
 import 'package:login_register/pages/dashboard.dart';
 import 'package:login_register/pages/detail_chat.dart';
 import 'package:login_register/pages/edit_profile_page.dart';
@@ -36,6 +38,8 @@ class MyApp extends StatelessWidget {
         '/Drawwer': (context) => DrawerScreen(),
         '/edit-profile': (context) => EditProfilePage(),
         '/cart': (context) => CartPage(),
+        '/checkout': (context) => CheckoutPage(),
+        '/checkout-success': (context) => CheckoutSuccessPage(),
       },
     );
   }
