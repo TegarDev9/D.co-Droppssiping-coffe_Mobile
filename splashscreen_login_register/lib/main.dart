@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:login_register/pages/Drawwer.dart';
+import 'package:login_register/pages/cart_page.dart';
 import 'package:login_register/pages/dashboard.dart';
 import 'package:login_register/pages/detail_chat.dart';
+import 'package:login_register/pages/edit_profile_page.dart';
 import 'package:login_register/pages/pages.dart';
 import 'package:login_register/pages/splash_page.dart';
 import 'package:login_register/shared/shared.dart';
@@ -32,6 +34,8 @@ class MyApp extends StatelessWidget {
         '/product': (context) => ProductPage(),
         '/product2': (context) => ProductPage2(),
         '/Drawwer': (context) => DrawerScreen(),
+        '/edit-profile': (context) => EditProfilePage(),
+        '/cart': (context) => CartPage(),
       },
     );
   }
