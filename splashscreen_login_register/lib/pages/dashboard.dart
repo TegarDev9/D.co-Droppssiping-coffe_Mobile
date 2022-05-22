@@ -39,7 +39,7 @@ class _MainPageState extends State<MainPage> {
                   'assets/images/home_icon.png',
                   width: 21,
                 ),
-                label: 'Hone',
+                label: 'Home',
               ),
               BottomNavigationBarItem(
                 icon: Image.asset(
@@ -53,7 +53,7 @@ class _MainPageState extends State<MainPage> {
                   'assets/images/chat_icon.png',
                   width: 20,
                 ),
-                label: 'chat',
+                label: 'Chat',
               ),
               BottomNavigationBarItem(
                 icon: Image.asset(

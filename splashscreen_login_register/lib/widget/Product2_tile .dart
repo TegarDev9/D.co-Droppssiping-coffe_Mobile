@@ -55,7 +55,7 @@ class ProductTile extends StatelessWidget {
                   SizedBox(
                     height: 2,
                   ),
-                  Text('\Rp.350000',
+                  Text('\Rp 35.000',
                       style: primaryTextStyle.copyWith(
                         fontWeight: semiBold,
                         fontSize: 12,

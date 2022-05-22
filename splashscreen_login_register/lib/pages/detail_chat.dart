@@ -87,7 +87,7 @@ class DetailChatPage extends StatelessWidget {
                     height: 2,
                   ),
                   Text(
-                    '\Rp.300000',
+                    '\Rp 35.000',
                     style: yellowTextStyle.copyWith(
                       fontWeight: medium,
                     ),
@@ -151,11 +151,11 @@ class DetailChatPage extends StatelessWidget {
         children: [
           ChatBubble(
             isSender: true,
-            text: 'Ho, This item is stilll avaiable?',
+            text: 'Ho, This item is stilll available?',
           ),
           ChatBubble(
             isSender: false,
-            text: 'Good night , this item is only avaible in size 42 and 43',
+            text: 'Good night , this item is only available in packs of 200 gr',
           ),
         ],
       );

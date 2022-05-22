@@ -46,7 +46,7 @@ class ProductTile2 extends StatelessWidget {
                     height: 2,
                   ),
                   Text(
-                    'kopi Kopi Robusta (nama Latin Coffea canephora atau Coffea robusta) merupakan keturunan beberapa spesies kopi, terutama Coffea canephora.',
+                    'Kopi Robusta (nama Latin Coffea canephora atau Coffea robusta) merupakan keturunan beberapa spesies kopi, terutama Coffea canephora.',
                     style: primaryTextStyle.copyWith(
                       fontSize: 10,
                       fontWeight: semiBold,
@@ -55,7 +55,7 @@ class ProductTile2 extends StatelessWidget {
                   SizedBox(
                     height: 2,
                   ),
-                  Text('\Rp.350000',
+                  Text('\Rp 35.000',
                       style: primaryTextStyle.copyWith(
                         fontWeight: semiBold,
                         fontSize: 12,

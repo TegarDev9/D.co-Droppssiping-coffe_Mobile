@@ -26,13 +26,13 @@ class Chattile extends StatelessWidget {
                   Column(
                     children: [
                       Text(
-                        'Dropshiper Coffe',
+                        'Dropshipper Coffee',
                         style: brownTextStyle.copyWith(
                           fontSize: 15,
                         ),
                       ),
                       Text(
-                        'Good night This item is on',
+                        'Good night, this item is on',
                         style: secondaryTextStyle.copyWith(
                           fontWeight: light,
                         ),

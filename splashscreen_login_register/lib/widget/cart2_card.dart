@@ -50,7 +50,7 @@ class Cart2Card extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Rp.35.000',
+                      'Rp 35.000',
                       style: primaryTextStyle.copyWith(
                         fontSize: 12,
                       ),

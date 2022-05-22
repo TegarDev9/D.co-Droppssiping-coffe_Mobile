@@ -63,7 +63,7 @@ class _ProductPageState extends State<ProductPage2> {
                     height: 12,
                   ),
                   Text(
-                    'Item added Succefuly',
+                    'Item added successfully',
                     style: primaryTextStyle,
                   ),
                   Container(
@@ -241,7 +241,7 @@ class _ProductPageState extends State<ProductPage2> {
                           SnackBar(
                             backgroundColor: secondaryColor,
                             content: Text(
-                              'has ben added to whislhlist',
+                              'Has been added to the wishlist',
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -252,7 +252,7 @@ class _ProductPageState extends State<ProductPage2> {
                             SnackBar(
                               backgroundColor: Signout,
                               content: Text(
-                                'has ben remove to whislhlist',
+                                'Has been remove from the wishlist',
                                 textAlign: TextAlign.center,
                               ),
                             ),
@@ -372,7 +372,7 @@ class _ProductPageState extends State<ProductPage2> {
                             backgroundColor: dangerColor,
                           ),
                           child: Text(
-                            'Rp.35.0000   |   Add to cart',
+                            'Rp 35.000   |   Add to cart',
                             style: primaryTextStyle.copyWith(
                               fontSize: 16,
                               fontWeight: semiBold,

@@ -37,7 +37,7 @@ class ProductTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Kopi beras',
+                    'Kopi Beras',
                     style: whiteTextStyle.copyWith(
                       fontSize: 14,
                     ),
@@ -46,7 +46,7 @@ class ProductTile extends StatelessWidget {
                     height: 2,
                   ),
                   Text(
-                    'kopi beras adalah biji kopi kering yang sudah dibuang kulit tanduk dan kulit arinya.',
+                    'Kopi beras adalah biji kopi kering yang sudah dibuang kulit tanduk dan kulit arinya.',
                     style: primaryTextStyle.copyWith(
                       fontSize: 10,
                       fontWeight: semiBold,
@@ -55,7 +55,7 @@ class ProductTile extends StatelessWidget {
                   SizedBox(
                     height: 2,
                   ),
-                  Text('\Rp.350000',
+                  Text('\Rp 35.000',
                       style: primaryTextStyle.copyWith(
                         fontWeight: semiBold,
                         fontSize: 12,

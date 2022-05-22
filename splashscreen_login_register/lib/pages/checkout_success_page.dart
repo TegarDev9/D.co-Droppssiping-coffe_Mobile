@@ -60,7 +60,7 @@ class CheckoutSuccessPage extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'Order other product',
+                  'Order the other product',
                   style: brownTextStyle.copyWith(
                     fontSize: 16,
                     fontWeight: medium,
@@ -83,7 +83,7 @@ class CheckoutSuccessPage extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'View My Order',
+                  'View m order',
                   style: whiteTextStyle.copyWith(
                     fontSize: 16,
                     fontWeight: medium,

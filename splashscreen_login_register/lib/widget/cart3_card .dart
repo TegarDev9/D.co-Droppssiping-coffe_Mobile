@@ -43,14 +43,14 @@ class Cart3Card extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Kopi robusta',
+                      'Kopi Robusta',
                       style: primaryTextStyle.copyWith(
                         fontWeight: semiBold,
                         fontSize: 12,
                       ),
                     ),
                     Text(
-                      'Rp.35.000',
+                      'Rp 35.000',
                       style: primaryTextStyle.copyWith(
                         fontSize: 12,
                       ),

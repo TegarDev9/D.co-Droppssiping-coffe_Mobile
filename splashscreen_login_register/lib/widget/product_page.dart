@@ -65,7 +65,7 @@ class _ProductPageState extends State<ProductPage> {
                     height: 12,
                   ),
                   Text(
-                    'Item added Succefuly',
+                    'Item added successfully',
                     style: primaryTextStyle,
                   ),
                   Container(
@@ -250,7 +250,7 @@ class _ProductPageState extends State<ProductPage> {
                           SnackBar(
                             backgroundColor: secondaryColor,
                             content: Text(
-                              'has ben added to whislhlist',
+                              'Has been added to the wishlist',
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -261,7 +261,7 @@ class _ProductPageState extends State<ProductPage> {
                             SnackBar(
                               backgroundColor: Signout,
                               content: Text(
-                                'has ben remove to whislhlist',
+                                'Has been remove from the wishlist',
                                 textAlign: TextAlign.center,
                               ),
                             ),
@@ -309,7 +309,7 @@ class _ProductPageState extends State<ProductPage> {
                     height: 2,
                   ),
                   Text(
-                    'KopiBeras,alternatif pengganti minuman kopi bagi yang menghindari kafein dan berbagai penyakit serangan jantung. Cara mengolah beras kopi ini sangat sederhana,  siapkan wajan dengan menggunakan bara api untuk memanggang beras. Lalu sangrai beras sampai berubah warna dan mengeluarkan aroma khas.',
+                    'Kopi Beras, alternatif pengganti minuman kopi bagi yang menghindari kafein dan berbagai penyakit serangan jantung. Cara mengolah beras kopi ini sangat sederhana,  siapkan wajan dengan menggunakan bara api untuk memanggang beras. Lalu sangrai beras sampai berubah warna dan mengeluarkan aroma khas.',
                     style: dangerTextStyle.copyWith(
                       fontWeight: medium,
                       fontSize: 12,
@@ -381,7 +381,7 @@ class _ProductPageState extends State<ProductPage> {
                             backgroundColor: dangerColor,
                           ),
                           child: Text(
-                            'Rp.35.0000   |   Add to cart',
+                            'Rp 35.000   |   Add to cart',
                             style: primaryTextStyle.copyWith(
                               fontSize: 16,
                               fontWeight: semiBold,

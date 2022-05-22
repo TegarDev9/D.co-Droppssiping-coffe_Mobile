@@ -90,7 +90,7 @@ class CheckoutPage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              'sekarwangi',
+                              'Sekarwangi',
                               style: primaryTextStyle.copyWith(
                                 fontSize: 15,
                                 fontWeight: medium,
@@ -107,7 +107,7 @@ class CheckoutPage extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              'sukowono',
+                              'Sukowono',
                               style: primaryTextStyle.copyWith(
                                 fontSize: 15,
                                 fontWeight: medium,
@@ -133,7 +133,7 @@ class CheckoutPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Payment Sumary',
+                      'Payment Summary',
                       style: primaryTextStyle.copyWith(
                         fontSize: 16,
                         fontWeight: medium,
@@ -152,7 +152,7 @@ class CheckoutPage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'sekarwangi ',
+                          'Sekarwangi ',
                           style: primaryTextStyle.copyWith(
                             fontSize: 13,
                             fontWeight: medium,
@@ -188,13 +188,13 @@ class CheckoutPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          ' shipping',
+                          ' Shipping',
                           style: primaryTextStyle.copyWith(
                             fontSize: 12,
                           ),
                         ),
                         Text(
-                          'free ',
+                          'Free ',
                           style: primaryTextStyle.copyWith(
                             fontSize: 13,
                             fontWeight: medium,

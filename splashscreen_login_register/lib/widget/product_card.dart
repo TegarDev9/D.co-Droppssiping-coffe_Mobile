@@ -54,7 +54,7 @@ class ProductCard extends StatelessWidget {
                     textAlign: TextAlign.left,
                   ),
                   Text(
-                    'Rp 35.000,00',
+                    'Rp 35.000',
                     style: whiteTextStyle.copyWith(
                       fontSize: 12,
                       fontWeight: semiBold,

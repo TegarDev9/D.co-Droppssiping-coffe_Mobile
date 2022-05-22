@@ -50,7 +50,7 @@ class CartPage extends StatelessWidget {
               SizedBox(
                 height: 12,
               ),
-              Text('Lest find Your favorite coffe',
+              Text('Let\ns find your favorite coffee',
                   style: secondaryTextStyle.copyWith(
                     fontSize: 12,
                   )),
@@ -74,7 +74,7 @@ class CartPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       )),
                   child: Text(
-                    'Explore Store',
+                    'Explore store',
                     style: primaryTextStyle.copyWith(
                       fontWeight: medium,
                       fontSize: 16,
@@ -153,7 +153,7 @@ class CartPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Rp.2450.000',
+                      'Rp 2.450.000',
                       style: dangerTextStyle.copyWith(
                         fontSize: 16,
                         fontWeight: semiBold,

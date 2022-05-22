@@ -46,7 +46,7 @@ class ProductCard1 extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    'Kopi robusta',
+                    'Kopi Robusta',
                     style: whiteTextStyle.copyWith(
                       fontSize: 14,
                       fontWeight: semiBold,
@@ -54,7 +54,7 @@ class ProductCard1 extends StatelessWidget {
                     textAlign: TextAlign.left,
                   ),
                   Text(
-                    'Rp 35.000,00',
+                    'Rp 35.000',
                     style: whiteTextStyle.copyWith(
                       fontSize: 12,
                       fontWeight: semiBold,
