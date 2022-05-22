@@ -18,265 +18,258 @@ class CheckoutPage extends StatelessWidget {
     }
 
     Widget content() {
-      return ListView(
-        padding: EdgeInsets.symmetric(
-          horizontal: defaultMargin,
-        ),
-        children: [
-          //NOTE: LIST ITEM
-          Container(
-            margin: EdgeInsets.only(
-              top: defaultMargin,
+      return Expanded(
+        child: Container(
+          color: primaryColor,
+          child: ListView(
+            padding: EdgeInsets.symmetric(
+              horizontal: defaultMargin,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'List Item',
-                  style: brownTextStyle.copyWith(
-                    fontSize: 16,
-                    fontWeight: medium,
-                  ),
+            children: [
+              Container(
+                margin: EdgeInsets.only(
+                  top: defaultMargin,
                 ),
-                CheckoutCard(),
-                CheckoutCard(),
-              ],
-            ),
-          ),
-
-          //NOTE: ADDRESS DETAILS
-          Container(
-            margin: EdgeInsets.only(
-              top: defaultMargin,
-            ),
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: brownColor,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Address Details',
-                  style: whiteTextStyle.copyWith(
-                    fontSize: 16,
-                    fontWeight: medium,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [],
                 ),
-                SizedBox(
-                  height: 12,
+              ),
+              CheckoutCard(),
+              Container(
+                margin: EdgeInsets.only(
+                  top: defaultMargin,
                 ),
-                Row(
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: brownColor,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Column(
+                    Text(
+                      'Address Details',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 16,
+                        fontWeight: medium,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    Row(
                       children: [
-                        Image.asset(
-                          'assets/images/building.png',
-                          width: 40,
+                        Column(
+                          children: [
+                            Image.asset(
+                              'assets/images/Store_icon.png',
+                              width: 40,
+                            ),
+                            Image.asset(
+                              'assets/images/line1.png',
+                              height: 30,
+                            ),
+                            Image.asset(
+                              'assets/images/Location Icon.png',
+                              width: 40,
+                            ),
+                          ],
                         ),
-                        Image.asset(
-                          'assets/images/line.png',
-                          height: 30,
+                        SizedBox(
+                          width: 12,
                         ),
-                        Image.asset(
-                          'assets/images/maps.png',
-                          height: 40,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Store Location ',
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 12,
+                                fontWeight: light,
+                              ),
+                            ),
+                            Text(
+                              'sekarwangi',
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: medium,
+                              ),
+                            ),
+                            SizedBox(
+                              height: defaultMargin,
+                            ),
+                            Text(
+                              'Your Address ',
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 12,
+                                fontWeight: light,
+                              ),
+                            ),
+                            Text(
+                              'sukowono',
+                              style: primaryTextStyle.copyWith(
+                                fontSize: 15,
+                                fontWeight: medium,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(
+                  top: defaultMargin,
+                ),
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: brownColor,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Payment Sumary',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 16,
+                        fontWeight: medium,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          ' Product Quality',
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 12,
+                          ),
+                        ),
+                        Text(
+                          'sekarwangi ',
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 13,
+                            fontWeight: medium,
+                          ),
                         ),
                       ],
                     ),
                     SizedBox(
                       height: 12,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Store Location',
-                          style: whiteTextStyle.copyWith(
+                          ' Product price',
+                          style: primaryTextStyle.copyWith(
                             fontSize: 12,
-                            fontWeight: light,
                           ),
                         ),
                         Text(
-                          'Sekarwangi',
-                          style: whiteTextStyle.copyWith(
-                            fontWeight: medium,
-                          ),
-                        ),
-                        SizedBox(
-                          height: defaultMargin,
-                        ),
-                        Text(
-                          'Your Address',
-                          style: whiteTextStyle.copyWith(
-                            fontSize: 12,
-                            fontWeight: light,
-                          ),
-                        ),
-                        Text(
-                          'Ledokombo',
-                          style: whiteTextStyle.copyWith(
+                          'Rp 105.000',
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 13,
                             fontWeight: medium,
                           ),
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          ' shipping',
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 12,
+                          ),
+                        ),
+                        Text(
+                          'free ',
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 13,
+                            fontWeight: medium,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 12,
+                    ),
+                    Divider(
+                      thickness: 1,
+                      color: Color(0xff2E3141),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Total',
+                          style: treeTextStyle.copyWith(
+                            fontSize: 12,
+                            fontWeight: semiBold,
+                          ),
+                        ),
+                        Text(
+                          'Rp 105.000',
+                          style: treeTextStyle.copyWith(
+                            fontSize: 12,
+                            fontWeight: semiBold,
+                          ),
+                        ),
+                      ],
+                    )
                   ],
-                )
-              ],
-            ),
-          ),
-
-          // NOTE: PAYMENT SUMMARY
-          Container(
-            margin: EdgeInsets.only(
-              top: defaultMargin,
-            ),
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: brownColor,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Payment Summary',
-                  style: brownTextStyle.copyWith(
-                    fontSize: 16,
-                    fontWeight: medium,
+                ),
+              ),
+              SizedBox(
+                height: defaultMargin,
+              ),
+              Container(
+                height: 50,
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(
+                  vertical: defaultMargin,
+                ),
+                child: TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    backgroundColor: AppbarTextColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: Text(
+                    'Checkout now',
+                    style: primaryTextStyle.copyWith(
+                      fontWeight: semiBold,
+                      fontSize: 16,
+                    ),
                   ),
                 ),
-                SizedBox(
-                  height: 12,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Product Quantity',
-                      style: whiteTextStyle.copyWith(
-                        fontSize: 12,
-                      ),
-                    ),
-                    Text(
-                      '3 Items',
-                      style: whiteTextStyle.copyWith(
-                        fontWeight: medium,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 12,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Product Price',
-                      style: whiteTextStyle.copyWith(
-                        fontSize: 12,
-                      ),
-                    ),
-                    Text(
-                      'Rp 35.000',
-                      style: whiteTextStyle.copyWith(
-                        fontWeight: medium,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 12,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Shipping',
-                      style: whiteTextStyle.copyWith(
-                        fontSize: 12,
-                      ),
-                    ),
-                    Text(
-                      'Free',
-                      style: whiteTextStyle.copyWith(
-                        fontWeight: medium,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 12,
-                ),
-                Divider(
-                  thickness: 1,
-                  color: secondaryColor,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Total',
-                      style: treeTextStyle.copyWith(
-                        fontWeight: semiBold,
-                      ),
-                    ),
-                    Text(
-                      'Rp 35.000',
-                      style: treeTextStyle.copyWith(
-                        fontWeight: semiBold,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-
-          // NOTE: CHECKOUT BUTTON
-          SizedBox(
-            height: defaultMargin,
-          ),
-          Divider(
-            thickness: 1,
-            color: brownColor,
-          ),
-          Container(
-            height: 50,
-            width: double.infinity,
-            margin: EdgeInsets.symmetric(
-              vertical: defaultMargin,
-            ),
-            child: TextButton(
-              onPressed: () {
-                Navigator.pushNamedAndRemoveUntil(
-                    context, '/checkout-success', (route) => false);
-              },
-              style: TextButton.styleFrom(
-                backgroundColor: dangerColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
               ),
-              child: Text(
-                'Checkout Now',
-                style: whiteTextStyle.copyWith(),
-              ),
-            ),
+            ],
           ),
-        ],
+        ),
       );
     }
 
     return Column(
       children: [
         header(),
+        content(),
       ],
     );
   }

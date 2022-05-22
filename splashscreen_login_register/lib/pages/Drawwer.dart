@@ -17,7 +17,10 @@ class _DrawwerScreenState extends State<DrawerScreen> {
             UserAccountsDrawerHeader(
               accountName: Text("D.O Kyungsoo"),
               currentAccountPicture: CircleAvatar(
-                  backgroundImage: AssetImage("assets/images/People.png")),
+                backgroundImage: AssetImage(
+                  "assets/images/People.png",
+                ),
+              ),
               accountEmail: Text("@kyungsoo_ya"),
             ),
             DrawerListTile(
@@ -41,7 +44,23 @@ class _DrawwerScreenState extends State<DrawerScreen> {
               onTilePressed: () {},
             ),
             DrawerListTile(
-                iconData: Icons.phone, title: "Settings", onTilePressed: () {})
+                iconData: Icons.phone, title: "Settings", onTilePressed: () {}),
+            SizedBox(
+              height: 5,
+              width: 5,
+            ),
+            Row(
+              children: [
+                Image.asset(
+                  'assets/images/Exit_Button.png',
+                  width: 24,
+                ),
+                Text(
+                  'Sign out',
+                  style: Signout2,
+                ),
+              ],
+            ),
           ],
         ));
   }
