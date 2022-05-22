@@ -5,7 +5,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:login_register/pages/checkout_page.dart';
 import 'package:login_register/shared/shared.dart';
-import 'package:login_register/widget/checkout_card.dart';
+import 'package:login_register/widget/checkoutcard_card.dart';
 
 class ProductPage extends StatefulWidget {
   @override
@@ -73,7 +73,7 @@ class _ProductPageState extends State<ProductPage> {
                     height: 44,
                     child: TextButton(
                       onPressed: () {
-                        CheckoutCard();
+                        Navigator.pushNamed(context, '/checkout');
                       },
                       style: TextButton.styleFrom(
                         backgroundColor: primaryColor,

@@ -52,15 +52,20 @@ class HomePage extends StatelessWidget {
             SizedBox(
               width: 20,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Image.asset(
-                  'assets/images/shope_icon.png',
-                  width: 24,
-                  height: 24,
-                ),
-              ],
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/cart');
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.asset(
+                    'assets/images/shope_icon.png',
+                    width: 24,
+                    height: 24,
+                  ),
+                ],
+              ),
             ),
           ],
         ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login_register/shared/shared.dart';
-import 'package:login_register/widget/checkout_card.dart';
+
+import 'package:login_register/widget/checkoutcard_card.dart';
 
 class CheckoutPage extends StatelessWidget {
   @override

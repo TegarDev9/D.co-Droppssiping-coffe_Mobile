@@ -28,8 +28,9 @@ class ChatPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
-          'Manage Support ',
+          'Support ',
         ),
       ),
       body: Column(

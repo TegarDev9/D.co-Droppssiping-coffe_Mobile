@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:html';
 import 'package:login_register/shared/shared.dart';
 
 class Cart2Card extends StatelessWidget {

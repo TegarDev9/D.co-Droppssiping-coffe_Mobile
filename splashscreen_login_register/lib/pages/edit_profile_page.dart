@@ -30,55 +30,27 @@ class EditProfilePage extends StatelessWidget {
     Widget nameInput() {
       return Container(
         margin: EdgeInsets.only(
-          top: 30,
+          top: 12,
         ),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(
-            'Name',
-            style: textsenderTextStyle.copyWith(
-              fontSize: 13,
-            ),
-          ),
-          TextFormField(
-            style: brownTextStyle,
-            decoration: InputDecoration(
-              hintText: 'D.O Kyungsoo',
-              hintStyle: brownTextStyle,
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: textchat,
-                ),
-              ),
-            ),
-          )
-        ]),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [],
+        ),
       );
     }
 
     Widget usernameInput() {
       return Container(
         margin: EdgeInsets.only(
-          top: 30,
+          top: 12,
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
-            'Username',
+            'username',
             style: textsenderTextStyle.copyWith(
               fontSize: 13,
             ),
           ),
-          TextFormField(
-            style: brownTextStyle,
-            decoration: InputDecoration(
-              hintText: '@kyungsoo_yaa',
-              hintStyle: brownTextStyle,
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: textchat,
-                ),
-              ),
-            ),
-          )
         ]),
       );
     }
@@ -86,27 +58,15 @@ class EditProfilePage extends StatelessWidget {
     Widget emailInput() {
       return Container(
         margin: EdgeInsets.only(
-          top: 30,
+          top: 12,
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
-            'Email Address',
+            'emailaddress',
             style: textsenderTextStyle.copyWith(
               fontSize: 13,
             ),
           ),
-          TextFormField(
-            style: brownTextStyle,
-            decoration: InputDecoration(
-              hintText: 'kyungsoo@gmail.com',
-              hintStyle: brownTextStyle,
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: textchat,
-                ),
-              ),
-            ),
-          )
         ]),
       );
     }
@@ -114,27 +74,15 @@ class EditProfilePage extends StatelessWidget {
     Widget phoneInput() {
       return Container(
         margin: EdgeInsets.only(
-          top: 30,
+          top: 12,
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
-            'Phone Number',
+            'emailaddress',
             style: textsenderTextStyle.copyWith(
               fontSize: 13,
             ),
           ),
-          TextFormField(
-            style: brownTextStyle,
-            decoration: InputDecoration(
-              hintText: '085854032827',
-              hintStyle: brownTextStyle,
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: textchat,
-                ),
-              ),
-            ),
-          )
         ]),
       );
     }
@@ -161,10 +109,6 @@ class EditProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-            nameInput(),
-            usernameInput(),
-            emailInput(),
-            phoneInput(),
           ],
         ),
       );
@@ -174,6 +118,10 @@ class EditProfilePage extends StatelessWidget {
       children: [
         header(),
         content(),
+        nameInput(),
+        usernameInput(),
+        emailInput(),
+        phoneInput(),
       ],
     );
   }
