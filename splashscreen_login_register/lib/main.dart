@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_register/pages/Drawwer.dart';
-import 'package:login_register/pages/cart_page.dart';
+
 import 'package:login_register/pages/checkout_page.dart';
 import 'package:login_register/pages/checkout_success_page.dart';
 import 'package:login_register/pages/dashboard.dart';
@@ -9,8 +9,13 @@ import 'package:login_register/pages/edit_profile_page.dart';
 import 'package:login_register/pages/pages.dart';
 import 'package:login_register/pages/splash_page.dart';
 import 'package:login_register/shared/shared.dart';
+import 'package:login_register/widget/cart2_card.dart';
+import 'package:login_register/widget/cart2_card.dart';
+import 'package:login_register/widget/cart3_card%20.dart';
+import 'package:login_register/widget/cart_page.dart';
 import 'package:login_register/widget/product2_page.dart';
 import 'package:login_register/widget/product_page.dart';
+import 'package:login_register/widget/whislist_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,6 +42,9 @@ class MyApp extends StatelessWidget {
         '/product2': (context) => ProductPage2(),
         '/Drawwer': (context) => DrawerScreen(),
         '/edit-profile': (context) => EditProfilePage(),
+        '/cart2': (context) => Cart2Card(),
+        '/cart3': (context) => Cart3Card(),
+        'whislist': (context) => WhislistCard(),
         '/cart': (context) => CartPage(),
         '/checkout': (context) => CheckoutPage(),
         '/checkout-success': (context) => CheckoutSuccessPage(),

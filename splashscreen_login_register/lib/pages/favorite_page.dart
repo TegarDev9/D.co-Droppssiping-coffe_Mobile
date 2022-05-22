@@ -98,11 +98,7 @@ class favoritePage extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               horizontal: defaultMargin,
             ),
-            children: [
-              WhislistCard(),
-              WhislistCard(),
-              WhislistCard(),
-            ],
+            children: [],
           ),
         ),
       );

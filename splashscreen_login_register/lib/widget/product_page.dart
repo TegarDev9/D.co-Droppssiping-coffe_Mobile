@@ -3,7 +3,9 @@ import 'dart:js';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:login_register/pages/checkout_page.dart';
 import 'package:login_register/shared/shared.dart';
+import 'package:login_register/widget/checkout_card.dart';
 
 class ProductPage extends StatefulWidget {
   @override
@@ -70,7 +72,9 @@ class _ProductPageState extends State<ProductPage> {
                     width: 154,
                     height: 44,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        CheckoutCard();
+                      },
                       style: TextButton.styleFrom(
                         backgroundColor: primaryColor,
                         shape: RoundedRectangleBorder(
@@ -146,10 +150,15 @@ class _ProductPageState extends State<ProductPage> {
                     color: whiteColor,
                   ),
                 ),
-                Image.asset(
-                  'assets/images/shope_icon.png',
-                  height: 20,
-                  width: 20,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/cart');
+                  },
+                  child: Image.asset(
+                    'assets/images/shope_icon.png',
+                    height: 20,
+                    width: 20,
+                  ),
                 ),
               ],
             ),
