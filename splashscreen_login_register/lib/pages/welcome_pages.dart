@@ -28,6 +28,35 @@ class _WellcomePageState extends State<WellcomePage> {
         password: passwordController.text,
       )) {
         Navigator.pushNamed(context, '/dashboard');
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Signout,
+            content: Text(
+              'Gagal Register',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
+      }
+    }
+
+    handleSignIn() async {
+      if (await authProvider.login(
+        username: usernameController.text,
+        password: passwordController.text,
+      )) {
+        Navigator.pushNamed(context, '/dashboard');
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Signout,
+            content: Text(
+              'Gagal Login',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
       }
     }
 
@@ -584,11 +613,7 @@ class _WellcomePageState extends State<WellcomePage> {
                                                           .width -
                                                       2 * defaultMargin,
                                                   child: ElevatedButton(
-                                                      onPressed: () {
-                                                        Navigator.pushNamed(
-                                                            context,
-                                                            '/dashboard');
-                                                      },
+                                                      onPressed: handleSignIn,
                                                       child: Text(
                                                         'Login',
                                                         style: whiteTextStyle
