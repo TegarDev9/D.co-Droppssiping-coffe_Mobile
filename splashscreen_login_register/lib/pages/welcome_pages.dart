@@ -8,6 +8,10 @@ class WellcomePage extends StatefulWidget {
 }
 
 class _WellcomePageState extends State<WellcomePage> {
+  TextEditingController usernameController = TextEditingController(text: '');
+  TextEditingController emailController = TextEditingController(text: '');
+  TextEditingController phoneController = TextEditingController(text: '');
+  TextEditingController passwordController = TextEditingController(text: '');
   bool _isHiddenPassword = true;
   bool _isHiddenConfirmPassword = true;
 
@@ -15,6 +19,18 @@ class _WellcomePageState extends State<WellcomePage> {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    handleSignUp() async {
+      if (await authProvider.register(
+        username: usernameController.text,
+        email: emailController.text,
+        phone: phoneController.text,
+        password: passwordController.text,
+      )) {
+        Navigator.pushNamed(context, '/dashboard');
+      }
+    }
+
     return Scaffold(
       backgroundColor: primaryColor,
       body: SafeArea(
@@ -144,7 +160,9 @@ class _WellcomePageState extends State<WellcomePage> {
                                                 height: 25,
                                               ),
 
-                                              TextField(
+                                              TextFormField(
+                                                  controller:
+                                                      usernameController,
                                                   style:
                                                       dangerTextStyle.copyWith(
                                                           fontWeight:
@@ -168,7 +186,8 @@ class _WellcomePageState extends State<WellcomePage> {
                                                 height: 9,
                                               ),
 
-                                              TextField(
+                                              TextFormField(
+                                                  controller: emailController,
                                                   style:
                                                       dangerTextStyle.copyWith(
                                                           fontWeight:
@@ -192,7 +211,8 @@ class _WellcomePageState extends State<WellcomePage> {
                                                 height: 9,
                                               ),
 
-                                              TextField(
+                                              TextFormField(
+                                                  controller: phoneController,
                                                   style:
                                                       dangerTextStyle.copyWith(
                                                           fontWeight:
@@ -216,7 +236,7 @@ class _WellcomePageState extends State<WellcomePage> {
                                                 height: 9,
                                               ),
 
-                                              TextField(
+                                              TextFormField(
                                                   style:
                                                       dangerTextStyle.copyWith(
                                                           fontWeight:
@@ -240,7 +260,9 @@ class _WellcomePageState extends State<WellcomePage> {
                                                 height: 9,
                                               ),
 
-                                              TextField(
+                                              TextFormField(
+                                                  controller:
+                                                      passwordController,
                                                   style:
                                                       dangerTextStyle.copyWith(
                                                           fontWeight:
@@ -272,11 +294,7 @@ class _WellcomePageState extends State<WellcomePage> {
                                                           .width -
                                                       2 * defaultMargin,
                                                   child: ElevatedButton(
-                                                      onPressed: () {
-                                                        Navigator.pushNamed(
-                                                            context,
-                                                            '/dashboard');
-                                                      },
+                                                      onPressed: handleSignUp,
                                                       child: Text(
                                                         'Register',
                                                         style: whiteTextStyle
