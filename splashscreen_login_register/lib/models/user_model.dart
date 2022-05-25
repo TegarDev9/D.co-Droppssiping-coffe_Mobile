@@ -1,14 +1,14 @@
 class UserModel {
   String? username;
   String? email;
-  String? phone;
+  String? no_telp;
   String? password;
   String? token;
 
   UserModel({
     required this.username,
     required this.email,
-    required this.phone,
+    required this.no_telp,
     required this.password,
     required this.token,
   });
@@ -16,7 +16,7 @@ class UserModel {
   UserModel.fromJson(Map<String, dynamic> json) {
     username = json['username'];
     email = json['email'];
-    phone = json['phone'];
+    no_telp = json['no_telp'];
     password = json['password'];
     token = json['token'];
   }
@@ -24,7 +24,7 @@ class UserModel {
     return {
       'username': username,
       'email': email,
-      'phone': phone,
+      'no_telp': no_telp,
       'password': password,
       'token': token,
     };

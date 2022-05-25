@@ -8,6 +8,7 @@ class WellcomePage extends StatefulWidget {
 }
 
 class _WellcomePageState extends State<WellcomePage> {
+  TextEditingController namaController = TextEditingController(text: '');
   TextEditingController usernameController = TextEditingController(text: '');
   TextEditingController emailController = TextEditingController(text: '');
   TextEditingController phoneController = TextEditingController(text: '');
@@ -22,9 +23,10 @@ class _WellcomePageState extends State<WellcomePage> {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
     handleSignUp() async {
       if (await authProvider.register(
+        nama: namaController.text,
         username: usernameController.text,
         email: emailController.text,
-        phone: phoneController.text,
+        notelp: phoneController.text,
         password: passwordController.text,
       )) {
         Navigator.pushNamed(context, '/dashboard');
@@ -43,7 +45,7 @@ class _WellcomePageState extends State<WellcomePage> {
 
     handleSignIn() async {
       if (await authProvider.login(
-        username: usernameController.text,
+        email: emailController.text,
         password: passwordController.text,
       )) {
         Navigator.pushNamed(context, '/dashboard');
@@ -186,7 +188,32 @@ class _WellcomePageState extends State<WellcomePage> {
                                               ),
 
                                               SizedBox(
-                                                height: 25,
+                                                height: 29,
+                                              ),
+
+                                              TextFormField(
+                                                  controller: namaController,
+                                                  style:
+                                                      dangerTextStyle.copyWith(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontSize: 14,
+                                                          color: dangerColor),
+                                                  decoration: InputDecoration(
+                                                      border:
+                                                          OutlineInputBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(30),
+                                                      ),
+                                                      hintText:
+                                                          "Enter your Nama",
+                                                      labelText: "Nama Lengkap",
+                                                      suffixIcon: InkWell(
+                                                          child: Icon(Icons
+                                                              .person_outline)))),
+                                              SizedBox(
+                                                height: 9,
                                               ),
 
                                               TextFormField(
@@ -266,6 +293,9 @@ class _WellcomePageState extends State<WellcomePage> {
                                               ),
 
                                               TextFormField(
+                                                  obscureText: true,
+                                                  controller:
+                                                      passwordController,
                                                   style:
                                                       dangerTextStyle.copyWith(
                                                           fontWeight:
@@ -290,8 +320,7 @@ class _WellcomePageState extends State<WellcomePage> {
                                               ),
 
                                               TextFormField(
-                                                  controller:
-                                                      passwordController,
+                                                  obscureText: true,
                                                   style:
                                                       dangerTextStyle.copyWith(
                                                           fontWeight:
@@ -508,6 +537,7 @@ class _WellcomePageState extends State<WellcomePage> {
                                               ),
 
                                               TextField(
+                                                  controller: emailController,
                                                   style:
                                                       dangerTextStyle.copyWith(
                                                           fontWeight:
@@ -522,8 +552,8 @@ class _WellcomePageState extends State<WellcomePage> {
                                                                 .circular(30),
                                                       ),
                                                       hintText:
-                                                          "Enter your username",
-                                                      labelText: "Username",
+                                                          "Enter your Email",
+                                                      labelText: "Email",
                                                       suffixIcon: InkWell(
                                                           child: Icon(Icons
                                                               .person_outline)))),
@@ -532,6 +562,9 @@ class _WellcomePageState extends State<WellcomePage> {
                                               ),
 
                                               TextField(
+                                                  obscureText: true,
+                                                  controller:
+                                                      passwordController,
                                                   style:
                                                       dangerTextStyle.copyWith(
                                                           fontWeight:

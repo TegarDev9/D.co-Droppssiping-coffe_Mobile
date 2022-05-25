@@ -5,21 +5,23 @@ import 'package:login_register/pages/pages.dart';
 import 'package:http/http.dart' as http;
 
 class AuthService {
-  String baseUrl = '/api';
+  String? baseUrl = 'http://192.168.1.14:8000/api';
 
   Future<UserModel> register({
+    String? nama,
     String? username,
     String? email,
-    String? phone,
+    String? notelp,
     String? password,
     String? token,
   }) async {
     var url = '$baseUrl/register';
     var headers = {'content-Type': 'application/json'};
     var body = jsonEncode({
+      'nama': nama,
       'username': username,
       'email': email,
-      'phone': phone,
+      'no_telp': notelp,
       'password': password,
       'token': token,
     });
@@ -43,13 +45,13 @@ class AuthService {
   }
 
   Future<UserModel> login({
-    String? username,
+    String? email,
     String? password,
   }) async {
-    var url = '$baseUrl/login';
+    var url = "$baseUrl/login";
     var headers = {'content-Type': 'application/json'};
     var body = jsonEncode({
-      'username': username,
+      'email': email,
       'password': password,
     });
 

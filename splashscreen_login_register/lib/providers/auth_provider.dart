@@ -12,22 +12,25 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<bool> register({
+    String? nama,
     String? username,
     String? email,
-    String? phone,
+    String? notelp,
     String? password,
     String? token,
   }) async {
     try {
       UserModel user = await AuthService().register(
+        nama: nama,
         username: username,
         email: email,
-        phone: phone,
+        notelp: notelp,
         password: password,
       );
+      debugPrint(nama);
       debugPrint(username);
       debugPrint(email);
-      debugPrint(phone);
+      debugPrint(notelp);
       debugPrint(password);
       _user = user;
       return true;
@@ -38,15 +41,15 @@ class AuthProvider with ChangeNotifier {
   }
 
   Future<bool> login({
-    String? username,
+    String? email,
     String? password,
   }) async {
     try {
       UserModel user = await AuthService().login(
-        username: username,
+        email: email,
         password: password,
       );
-      debugPrint(username);
+      debugPrint(email);
       debugPrint(password);
       _user = user;
       return true;
