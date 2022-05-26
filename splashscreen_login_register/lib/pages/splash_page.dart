@@ -12,7 +12,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     Timer(
       Duration(seconds: 5),
-      () => Navigator.pushNamed(context(), '/welcome-pages'),
+      () => Navigator.pushNamed(context, '/welcome-pages'),
     );
     super.initState();
   }
