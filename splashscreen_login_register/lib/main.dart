@@ -9,6 +9,7 @@ import 'package:login_register/pages/edit_profile_page.dart';
 import 'package:login_register/pages/pages.dart';
 import 'package:login_register/pages/splash_page.dart';
 import 'package:login_register/providers/auth_provider.dart';
+import 'package:login_register/providers/product_provider.dart';
 import 'package:login_register/shared/shared.dart';
 import 'package:login_register/widget/cart2_card.dart';
 import 'package:login_register/widget/cart2_card.dart';
@@ -34,6 +35,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => AuthProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => Productprovider(),
         ),
       ],
       child: MaterialApp(

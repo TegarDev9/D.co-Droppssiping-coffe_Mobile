@@ -294,8 +294,6 @@ class _WellcomePageState extends State<WellcomePage> {
 
                                               TextFormField(
                                                   obscureText: true,
-                                                  controller:
-                                                      passwordController,
                                                   style:
                                                       dangerTextStyle.copyWith(
                                                           fontWeight:
@@ -321,6 +319,8 @@ class _WellcomePageState extends State<WellcomePage> {
 
                                               TextFormField(
                                                   obscureText: true,
+                                                  controller:
+                                                      passwordController,
                                                   style:
                                                       dangerTextStyle.copyWith(
                                                           fontWeight:
@@ -536,7 +536,7 @@ class _WellcomePageState extends State<WellcomePage> {
                                                 height: 25,
                                               ),
 
-                                              TextField(
+                                              TextFormField(
                                                   controller: emailController,
                                                   style:
                                                       dangerTextStyle.copyWith(
@@ -561,7 +561,7 @@ class _WellcomePageState extends State<WellcomePage> {
                                                 height: 9,
                                               ),
 
-                                              TextField(
+                                              TextFormField(
                                                   obscureText: true,
                                                   controller:
                                                       passwordController,

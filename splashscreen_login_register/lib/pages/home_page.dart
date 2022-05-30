@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:login_register/models/user_model.dart';
+import 'package:login_register/models/product_model.dart';
 import 'package:login_register/pages/Drawwer.dart';
+import 'package:login_register/providers/auth_provider.dart';
+import 'package:login_register/providers/product_provider.dart';
 import 'package:login_register/shared/shared.dart';
 import 'package:login_register/widget/Product_tile.dart';
 import 'package:login_register/widget/Product_tile2.dart';
 import 'package:login_register/widget/product_card.dart';
 import 'package:login_register/widget/product_card1.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    UserModel user = authProvider.user;
+
+    Productprovider productprovider = Provider.of<Productprovider>(context);
+    // Provider.of<Productprovider>(context, listen: false).getProducts();
     Widget Appbar() {
       return Container(
         margin: EdgeInsets.only(
@@ -81,7 +93,7 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Welcome,  D.O Kyungsoo',
+                    'Welcome,  ${user.nama}',
                     style: nameTextStyle.copyWith(
                       fontSize: 28,
                       fontWeight: regular,
@@ -225,19 +237,27 @@ class HomePage extends StatelessWidget {
         margin: EdgeInsets.only(top: 10),
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Row(children: [
-            SizedBox(
-              width: defaultMargin,
-            ),
-            Row(
-              children: [
-                ProductCard(),
-                ProductCard1(),
-                ProductCard(),
-                ProductCard1(),
-              ],
-            ),
-          ]),
+          child: Row(
+            children: [
+              SizedBox(
+                width: defaultMargin,
+              ),
+
+              // Row(
+              //   children: [
+              //     ProductCard1(),
+              //     //ProductCard1(),
+              //   ],
+              // ),
+              Row(
+                children: productprovider.products
+                    .map(
+                      (product) => ProductCard(product),
+                    )
+                    .toList(),
+              ),
+            ],
+          ),
         ),
       );
     }
@@ -265,12 +285,9 @@ class HomePage extends StatelessWidget {
           top: 13,
         ),
         child: Column(
-          children: [
-            ProductTile(),
-            ProductTile2(),
-            ProductTile(),
-            ProductTile2(),
-          ],
+          children: productprovider.products
+              .map((product) => ProductTile(product))
+              .toList(),
         ),
       );
     }
@@ -283,7 +300,6 @@ class HomePage extends StatelessWidget {
         popularProducts(),
         TerfavoriteTile(),
         terfavorite(),
-        ProductTile(),
       ],
     );
   }

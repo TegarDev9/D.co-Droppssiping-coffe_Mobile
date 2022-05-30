@@ -2,42 +2,47 @@ import 'package:flutter/material.dart';
 import 'package:login_register/shared/shared.dart';
 
 class EditProfilePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Setting UI",
+      home: EditProfilePage(),
+    );
+  }
+}
+
+class ProfilePage extends StatefulWidget {
+  @override
+  _EditProfilePageState createState() => _EditProfilePageState();
+}
+
+class _EditProfilePageState extends State<ProfilePage> {
   bool showPassword = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppbarTextColor,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 1,
         leading: IconButton(
           icon: Icon(
-            Icons.close,
-            color: whiteColor,
+            Icons.arrow_back,
+            color: Colors.green,
           ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        centerTitle: true,
-        title: Text(
-          "Edit Profile",
-          style: primaryTextStyle.copyWith(
-            fontWeight: semiBold,
-            fontSize: 16,
-          ),
+          onPressed: () {},
         ),
         actions: [
           IconButton(
             icon: Icon(
-              Icons.check,
-              color: treeColor,
+              Icons.settings,
+              color: Colors.green,
             ),
             onPressed: () {},
           ),
         ],
       ),
       body: Container(
-        color: primaryColor,
         padding: EdgeInsets.only(left: 16, top: 25, right: 16),
         child: GestureDetector(
           onTap: () {
@@ -45,6 +50,10 @@ class EditProfilePage extends StatelessWidget {
           },
           child: ListView(
             children: [
+              Text(
+                "Edit Profile",
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+              ),
               SizedBox(
                 height: 15,
               ),
@@ -55,22 +64,22 @@ class EditProfilePage extends StatelessWidget {
                       width: 130,
                       height: 130,
                       decoration: BoxDecoration(
-                        border: Border.all(
-                            width: 4,
-                            color: Theme.of(context).scaffoldBackgroundColor),
-                        boxShadow: [
-                          BoxShadow(
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              color: Colors.black.withOpacity(0.1),
-                              offset: Offset(0, 10))
-                        ],
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage('assets/images/Mask.png'),
-                        ),
-                      ),
+                          border: Border.all(
+                              width: 4,
+                              color: Theme.of(context).scaffoldBackgroundColor),
+                          boxShadow: [
+                            BoxShadow(
+                                spreadRadius: 2,
+                                blurRadius: 10,
+                                color: Colors.black.withOpacity(0.1),
+                                offset: Offset(0, 10))
+                          ],
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                "https://images.pexels.com/photos/3307758/pexels-photo-3307758.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250",
+                              ))),
                     ),
                     Positioned(
                         bottom: 0,
@@ -84,7 +93,7 @@ class EditProfilePage extends StatelessWidget {
                               width: 4,
                               color: Theme.of(context).scaffoldBackgroundColor,
                             ),
-                            color: brownColor,
+                            color: Colors.green,
                           ),
                           child: Icon(
                             Icons.edit,
@@ -97,10 +106,44 @@ class EditProfilePage extends StatelessWidget {
               SizedBox(
                 height: 35,
               ),
-              buildTextField("Name", "D.O Kyungsoo", false),
-              buildTextField("Username", "@kyungsoo_yaa", false),
-              buildTextField("Email Address", "kyungsoo@gmail.com", false),
-              buildTextField("Phone Number", "088888888888", false),
+              buildTextField("Full Name", "Dor Alex", false),
+              buildTextField("E-mail", "alexd@gmail.com", false),
+              buildTextField("Password", "********", true),
+              buildTextField("Location", "TLV, Israel", false),
+              SizedBox(
+                height: 35,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  OutlineButton(
+                    padding: EdgeInsets.symmetric(horizontal: 50),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    onPressed: () {},
+                    child: Text("CANCEL",
+                        style: TextStyle(
+                            fontSize: 14,
+                            letterSpacing: 2.2,
+                            color: Colors.black)),
+                  ),
+                  RaisedButton(
+                    onPressed: () {},
+                    color: Colors.green,
+                    padding: EdgeInsets.symmetric(horizontal: 50),
+                    elevation: 2,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Text(
+                      "SAVE",
+                      style: TextStyle(
+                          fontSize: 14,
+                          letterSpacing: 2.2,
+                          color: Colors.white),
+                    ),
+                  )
+                ],
+              )
             ],
           ),
         ),
@@ -117,7 +160,11 @@ class EditProfilePage extends StatelessWidget {
         decoration: InputDecoration(
             suffixIcon: isPasswordTextField
                 ? IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        showPassword = !showPassword;
+                      });
+                    },
                     icon: Icon(
                       Icons.remove_red_eye,
                       color: Colors.grey,
@@ -126,15 +173,12 @@ class EditProfilePage extends StatelessWidget {
                 : null,
             contentPadding: EdgeInsets.only(bottom: 3),
             labelText: labelText,
-            labelStyle: textsenderTextStyle.copyWith(
-              fontWeight: semiBold,
-              fontSize: 14,
-            ),
             floatingLabelBehavior: FloatingLabelBehavior.always,
             hintText: placeholder,
-            hintStyle: dangerTextStyle.copyWith(
-              fontWeight: medium,
-              fontSize: 14,
+            hintStyle: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
             )),
       ),
     );

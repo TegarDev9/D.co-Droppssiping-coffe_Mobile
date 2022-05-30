@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:login_register/providers/product_provider.dart';
 import 'package:login_register/shared/shared.dart';
+import 'package:provider/provider.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -10,11 +12,13 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    Timer(
-      Duration(seconds: 5),
-      () => Navigator.pushNamed(context, '/welcome-pages'),
-    );
+    getInit();
     super.initState();
+  }
+
+  getInit() async {
+    await Provider.of<Productprovider>(context, listen: false).getProducts();
+    Navigator.pushNamed(context, '/welcome-pages');
   }
 
   @override

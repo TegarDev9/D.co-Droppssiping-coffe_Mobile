@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:login_register/shared/shared.dart';
+import 'package:provider/provider.dart';
+
+import '../models/user_model.dart';
+import '../providers/auth_provider.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    UserModel user = authProvider.user;
     Widget header() {
       return AppBar(
         backgroundColor: brownColor,
@@ -30,14 +36,14 @@ class ProfilePage extends StatelessWidget {
                         width: 40,
                       ),
                       Text(
-                        'D.O Kyungsoo',
+                        '${user.nama}',
                         style: primaryTextStyle.copyWith(
                           fontSize: 18,
                           fontWeight: semiBold,
                         ),
                       ),
                       Text(
-                        '@kyungsoo_yaa',
+                        '${user.email}',
                         style: primaryTextStyle.copyWith(
                           fontSize: 16,
                         ),

@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login_register/shared/shared.dart';
+import 'package:provider/provider.dart';
+
+import '../models/user_model.dart';
+import '../providers/auth_provider.dart';
 
 class DrawerScreen extends StatefulWidget {
   @override
@@ -8,14 +12,16 @@ class DrawerScreen extends StatefulWidget {
 }
 
 class _DrawwerScreenState extends State<DrawerScreen> {
-  @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+    UserModel user = authProvider.user;
+
     return Drawer(
         backgroundColor: primaryColor,
         child: ListView(
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: Text("D.O Kyungsoo"),
+              accountName: Text('${user.nama}'),
               currentAccountPicture: CircleAvatar(
                 backgroundImage: AssetImage(
                   "assets/images/People.png",

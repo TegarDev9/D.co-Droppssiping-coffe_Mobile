@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:login_register/models/product_model.dart';
 import 'package:login_register/shared/shared.dart';
 
 class ProductTile extends StatelessWidget {
+  final productModel product;
+  ProductTile(this.product);
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -23,6 +27,7 @@ class ProductTile extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.asset(
+                // product!.galleries![0].url!,
                 'assets/images/product.png',
                 width: 100,
                 height: 100,
@@ -37,7 +42,7 @@ class ProductTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Kopi Beras',
+                    product.name,
                     style: whiteTextStyle.copyWith(
                       fontSize: 14,
                     ),
@@ -55,7 +60,7 @@ class ProductTile extends StatelessWidget {
                   SizedBox(
                     height: 2,
                   ),
-                  Text('\Rp 35.000',
+                  Text('\Rp${product.harga}',
                       style: primaryTextStyle.copyWith(
                         fontWeight: semiBold,
                         fontSize: 12,
