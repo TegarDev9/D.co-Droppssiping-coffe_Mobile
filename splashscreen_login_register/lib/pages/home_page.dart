@@ -6,9 +6,8 @@ import 'package:login_register/providers/auth_provider.dart';
 import 'package:login_register/providers/product_provider.dart';
 import 'package:login_register/shared/shared.dart';
 import 'package:login_register/widget/Product_tile.dart';
-import 'package:login_register/widget/Product_tile2.dart';
 import 'package:login_register/widget/product_card.dart';
-import 'package:login_register/widget/product_card1.dart';
+
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {

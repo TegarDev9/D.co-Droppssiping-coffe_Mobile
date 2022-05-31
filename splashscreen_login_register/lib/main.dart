@@ -17,7 +17,6 @@ import 'package:login_register/widget/cart3_card%20.dart';
 import 'package:login_register/widget/cart_page.dart';
 import 'package:login_register/widget/checkoutcard_card.dart';
 
-import 'package:login_register/widget/product2_page.dart';
 import 'package:login_register/widget/product_page.dart';
 import 'package:login_register/widget/whislist_card.dart';
 import 'package:provider/provider.dart';
@@ -52,8 +51,6 @@ class MyApp extends StatelessWidget {
           '/welcome-pages': (context) => WellcomePage(),
           '/dashboard': (context) => MainPage(),
           '/detail-chat': (context) => DetailChatPage(),
-          '/product': (context) => ProductPage(),
-          '/product2': (context) => ProductPage2(),
           '/Drawwer': (context) => DrawerScreen(),
           '/edit-profile': (context) => EditProfilePage(),
           '/cart2': (context) => Cart2Card(),

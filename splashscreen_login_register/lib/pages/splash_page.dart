@@ -17,8 +17,8 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   getInit() async {
-    await Provider.of<Productprovider>(context, listen: false).getProducts();
-    Navigator.pushNamed(context, '/welcome-pages');
+    await Provider.of<Productprovider>(context(), listen: false).getProducts();
+    Navigator.pushNamed(context(), '/welcome-pages');
   }
 
   @override

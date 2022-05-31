@@ -51,7 +51,8 @@ class ProductTile extends StatelessWidget {
                     height: 2,
                   ),
                   Text(
-                    'Kopi beras adalah biji kopi kering yang sudah dibuang kulit tanduk dan kulit arinya.',
+                    product.deskripsi!,
+                    // 'Kopi beras adalah biji kopi kering yang sudah dibuang kulit tanduk dan kulit arinya.',
                     style: primaryTextStyle.copyWith(
                       fontSize: 10,
                       fontWeight: semiBold,
@@ -60,11 +61,13 @@ class ProductTile extends StatelessWidget {
                   SizedBox(
                     height: 2,
                   ),
-                  Text('\Rp${product.harga}',
-                      style: primaryTextStyle.copyWith(
-                        fontWeight: semiBold,
-                        fontSize: 12,
-                      )),
+                  Text(
+                    '\Rp${product.harga}',
+                    style: primaryTextStyle.copyWith(
+                      fontWeight: semiBold,
+                      fontSize: 12,
+                    ),
+                  ),
                 ],
               ),
             ),

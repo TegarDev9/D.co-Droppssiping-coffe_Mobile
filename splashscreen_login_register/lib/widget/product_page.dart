@@ -3,11 +3,14 @@ import 'dart:js';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:login_register/models/product_model.dart';
 import 'package:login_register/pages/checkout_page.dart';
 import 'package:login_register/shared/shared.dart';
 import 'package:login_register/widget/checkoutcard_card.dart';
 
 class ProductPage extends StatefulWidget {
+  final productModel product;
+  ProductPage(this.product);
   @override
   State<ProductPage> createState() => _ProductPageState();
 }
@@ -223,7 +226,8 @@ class _ProductPageState extends State<ProductPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Kopi Beras',
+                          widget.product.name,
+                          // 'Kopi Beras',
                           style: dangerTextStyle.copyWith(
                             fontSize: 18,
                             fontWeight: semiBold,
@@ -309,7 +313,8 @@ class _ProductPageState extends State<ProductPage> {
                     height: 2,
                   ),
                   Text(
-                    'Kopi Beras, alternatif pengganti minuman kopi bagi yang menghindari kafein dan berbagai penyakit serangan jantung. Cara mengolah beras kopi ini sangat sederhana,  siapkan wajan dengan menggunakan bara api untuk memanggang beras. Lalu sangrai beras sampai berubah warna dan mengeluarkan aroma khas.',
+                    widget.product.deskripsi!,
+                    // 'Kopi Beras, alternatif pengganti minuman kopi bagi yang menghindari kafein dan berbagai penyakit serangan jantung. Cara mengolah beras kopi ini sangat sederhana,  siapkan wajan dengan menggunakan bara api untuk memanggang beras. Lalu sangrai beras sampai berubah warna dan mengeluarkan aroma khas.',
                     style: dangerTextStyle.copyWith(
                       fontWeight: medium,
                       fontSize: 12,
@@ -381,7 +386,7 @@ class _ProductPageState extends State<ProductPage> {
                             backgroundColor: dangerColor,
                           ),
                           child: Text(
-                            'Rp 35.000   |   Add to cart',
+                            '${widget.product.harga}    |   Add to cart',
                             style: primaryTextStyle.copyWith(
                               fontSize: 16,
                               fontWeight: semiBold,

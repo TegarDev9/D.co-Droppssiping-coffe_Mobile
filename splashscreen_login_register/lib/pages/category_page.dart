@@ -5,7 +5,6 @@ import 'package:line_icons/line_icons.dart';
 import 'package:login_register/pages/pages.dart';
 import 'package:login_register/shared/shared.dart';
 import 'package:login_register/widget/product_card.dart';
-import 'package:login_register/widget/product_card1.dart';
 
 void main() {
   runApp(const CategoryPage());

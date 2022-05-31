@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:login_register/models/product_model.dart';
 import 'package:login_register/shared/shared.dart';
+import 'package:login_register/widget/product_page.dart';
 
 class ProductCard extends StatelessWidget {
   final productModel product;
@@ -13,7 +14,12 @@ class ProductCard extends StatelessWidget {
     var url;
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/product');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductPage(product),
+          ),
+        );
       },
       child: Container(
         padding: EdgeInsets.symmetric(
@@ -54,8 +60,8 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    'asem',
-                    //'${product.category!.name}',
+                    // 'asem',
+                    '${product.category!.name}',
                     style: whiteTextStyle.copyWith(
                       fontSize: 14,
                       fontWeight: semiBold,
@@ -63,8 +69,7 @@ class ProductCard extends StatelessWidget {
                     textAlign: TextAlign.left,
                   ),
                   Text(
-                    '30000',
-                    //'\Rp${product.harga}',
+                    '\Rp${product.harga}',
                     style: whiteTextStyle.copyWith(
                       fontSize: 12,
                       fontWeight: semiBold,
@@ -78,7 +83,7 @@ class ProductCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Image.asset(
-                        'assets/images/favorite1.png',
+                        'assets/images/favorite2.png',
                         width: 20,
                         height: 20,
                         fit: BoxFit.cover,
