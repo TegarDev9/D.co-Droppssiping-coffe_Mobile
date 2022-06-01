@@ -1,48 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:login_register/providers/cart_provider.dart';
 import 'package:login_register/shared/shared.dart';
-import 'package:login_register/widget/cart2_card.dart';
-import 'package:login_register/widget/cart3_card%20.dart';
+import 'package:login_register/widget/cart_card.dart';
+
+import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget header() {
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
+
+    PreferredSizeWidget header() {
       return AppBar(
-        backgroundColor: primaryColor,
+        backgroundColor: brownColor,
         centerTitle: true,
-        title: Column(
-          children: [
-            Text(
-              'Card List',
-            ),
-            Row(
-              children: [],
-            ),
-          ],
+        title: Text(
+          'Cart List',
+          style: primaryTextStyle.copyWith(),
         ),
         elevation: 0,
         automaticallyImplyLeading: false,
       );
     }
 
-    Widget Emptycard() {
-      return Expanded(
+    Widget emptyCart() {
+      return Center(
         child: Container(
           width: double.infinity,
-          color: primaryTextColor,
+          color: primaryColor,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/Cart _icon_chat.png',
-                width: 74,
+                'assets/images/Favorite.png',
+                width: 80,
               ),
               SizedBox(
                 height: 20,
               ),
               Text(
-                'Opss! Empty cart',
-                style: primaryTextStyle.copyWith(
+                'Oops! Empty cart',
+                style: brownTextStyle.copyWith(
                   fontSize: 16,
                   fontWeight: medium,
                 ),
@@ -50,38 +48,38 @@ class CartPage extends StatelessWidget {
               SizedBox(
                 height: 12,
               ),
-              Text('Let\ns find your favorite coffee',
-                  style: secondaryTextStyle.copyWith(
-                    fontSize: 12,
-                  )),
-              SizedBox(
-                height: 20,
+              Text(
+                'Let\'s find your Coffe',
+                style: brownTextStyle,
               ),
               Container(
+                margin: EdgeInsets.only(top: 20),
+                width: 154,
                 height: 44,
                 child: TextButton(
                   onPressed: () {
                     Navigator.pushNamedAndRemoveUntil(
-                        context, '/home', (route) => false);
+                        context, '/dashboard', (route) => false);
                   },
                   style: TextButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 24,
-                      ),
-                      backgroundColor: primaryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      )),
+                    padding: EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 24,
+                    ),
+                    backgroundColor: dangerColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
                   child: Text(
-                    'Explore store',
+                    'Explore Now',
                     style: primaryTextStyle.copyWith(
-                      fontWeight: medium,
                       fontSize: 16,
+                      fontWeight: medium,
                     ),
                   ),
                 ),
-              ),
+              )
             ],
           ),
         ),
@@ -89,33 +87,26 @@ class CartPage extends StatelessWidget {
     }
 
     Widget content() {
-      return Expanded(
-        child: Container(
-          color: primaryColor,
-          child: ListView(
-            padding: EdgeInsets.symmetric(
-              horizontal: defaultMargin,
-            ),
-            children: [
-              Cart2Card(),
-              Cart3Card(),
-              Cart2Card(),
-              Cart3Card(),
-            ],
-          ),
+      return Container(
+        color: primaryColor,
+        child: ListView(
+          padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+          children: cartProvider.carts
+              .map(
+                (e) => CartCard(e),
+              )
+              .toList(),
         ),
       );
     }
 
-    Widget CustumButtonNav() {
+    Widget customBottomNav() {
       return Container(
-        height: 140,
+        height: 180,
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.symmetric(
-                horizontal: defaultMargin,
-              ),
+              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [],
@@ -124,36 +115,27 @@ class CartPage extends StatelessWidget {
             SizedBox(
               height: 15,
             ),
-            Divider(
-              thickness: 0.3,
-              color: primaryTextColor,
-            ),
-            SizedBox(
-              height: 15,
-            ),
+            SizedBox(height: 30),
+            SizedBox(height: 30),
             Container(
-              margin: EdgeInsets.symmetric(
-                horizontal: defaultMargin,
-              ),
               height: 50,
+              margin: EdgeInsets.symmetric(horizontal: defaultMargin),
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/checkout');
+                },
                 style: TextButton.styleFrom(
-                  backgroundColor: secondaryColor,
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20,
-                  ),
+                  backgroundColor: primaryTextColor,
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                      12,
-                    ),
+                    borderRadius: BorderRadius.circular(12),
                   ),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Rp 2.450.000',
+                      '${cartProvider.totalHarga()}',
                       style: dangerTextStyle.copyWith(
                         fontSize: 16,
                         fontWeight: semiBold,
@@ -161,8 +143,9 @@ class CartPage extends StatelessWidget {
                     ),
                     Text(
                       'Buy Now',
-                      style: primaryTextStyle.copyWith(
+                      style: dangerTextStyle.copyWith(
                         fontSize: 15,
+                        fontWeight: semiBold,
                       ),
                     ),
                     Icon(
@@ -172,18 +155,18 @@ class CartPage extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       );
     }
 
-    return Column(
-      children: [
-        header(),
-        content(),
-        CustumButtonNav(),
-      ],
+    return Scaffold(
+      backgroundColor: primaryColor,
+      appBar: header(),
+      body: cartProvider.carts.length == 0 ? emptyCart() : content(),
+      bottomNavigationBar:
+          cartProvider.carts.length == 0 ? SizedBox() : customBottomNav(),
     );
   }
 }

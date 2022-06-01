@@ -1,12 +1,21 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:login_register/models/product_model.dart';
 import 'package:login_register/pages/pages.dart';
+import 'package:login_register/providers/page_provider.dart';
+import 'package:login_register/providers/wishlist_provider.dart';
 import 'package:login_register/shared/shared.dart';
+import 'package:provider/provider.dart';
 
 class WhislistCard extends StatelessWidget {
+  final productModel product;
+  WhislistCard(this.product);
+
   @override
   Widget build(BuildContext context) {
+    WishlistProvider wishlistProvider = Provider.of<WishlistProvider>(context);
+
     return Container(
       margin: EdgeInsets.only(
         top: 20,
@@ -26,6 +35,7 @@ class WhislistCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: Image.asset(
+              //  product.galleries![0].url!,
               'assets/images/product 5.png',
               width: 60,
             ),
@@ -38,21 +48,26 @@ class WhislistCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Kopi Susu',
+                  product.name,
                   style: primaryTextStyle.copyWith(
                     fontWeight: semiBold,
                   ),
                 ),
                 Text(
-                  'Rp.30000',
+                  '${product.harga}',
                   style: primaryTextStyle,
                 ),
               ],
             ),
           ),
-          Image.asset(
-            'assets/images/whislist_button.png',
-            width: 34,
+          GestureDetector(
+            onTap: () {
+              wishlistProvider.setProduct(product);
+            },
+            child: Image.asset(
+              'assets/images/favorite1.png',
+              width: 34,
+            ),
           ),
         ],
       ),

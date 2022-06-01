@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:login_register/pages/pages.dart';
+import 'package:login_register/providers/page_provider.dart';
+import 'package:login_register/providers/wishlist_provider.dart';
 import 'package:login_register/shared/shared.dart';
 import 'package:login_register/widget/whislist_card.dart';
+import 'package:provider/provider.dart';
 
-class favoritePage extends StatelessWidget {
+class WhishlistPage extends StatelessWidget {
+  const WhishlistPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    WishlistProvider wishlistProvider = Provider.of<WishlistProvider>(context);
+
     Widget header() {
       return AppBar(
         backgroundColor: AppbarTextColor,
@@ -93,12 +99,16 @@ class favoritePage extends StatelessWidget {
     Widget content() {
       return Expanded(
         child: Container(
-          color: brownColor,
+          color: primaryColor,
           child: ListView(
             padding: EdgeInsets.symmetric(
               horizontal: defaultMargin,
             ),
-            children: [],
+            children: wishlistProvider.wishlist
+                .map(
+                  (product) => WhislistCard(product),
+                )
+                .toList(),
           ),
         ),
       );
@@ -107,7 +117,7 @@ class favoritePage extends StatelessWidget {
     return Column(
       children: [
         header(),
-        whiistlist(),
+        wishlistProvider.wishlist.length == 0 ? whiistlist() : content(),
       ],
     );
   }

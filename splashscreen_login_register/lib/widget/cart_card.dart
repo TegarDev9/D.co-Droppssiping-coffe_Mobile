@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:login_register/models/cart_model.dart';
+import 'package:login_register/providers/cart_provider.dart';
 import 'dart:html';
 import 'package:login_register/shared/shared.dart';
+import 'package:provider/provider.dart';
 
-class Cart3Card extends StatelessWidget {
+class CartCard extends StatelessWidget {
+  final CartModel cart;
+  CartCard(this.cart);
   @override
   Widget build(BuildContext context) {
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
     return Container(
       margin: EdgeInsets.only(
         top: defaultMargin,
@@ -43,14 +49,14 @@ class Cart3Card extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Kopi Robusta',
+                      cart.product.name,
                       style: primaryTextStyle.copyWith(
                         fontWeight: semiBold,
                         fontSize: 12,
                       ),
                     ),
                     Text(
-                      'Rp 35.000',
+                      '35000',
                       style: primaryTextStyle.copyWith(
                         fontSize: 12,
                       ),
@@ -60,9 +66,14 @@ class Cart3Card extends StatelessWidget {
               ),
               Column(
                 children: [
-                  Image.asset(
-                    'assets/images/trash.png',
-                    width: 40,
+                  GestureDetector(
+                    onTap: () {
+                      cartProvider.removeCart(cart.id);
+                    },
+                    child: Image.asset(
+                      'assets/images/trash.png',
+                      width: 40,
+                    ),
                   ),
                 ],
               ),
@@ -73,24 +84,34 @@ class Cart3Card extends StatelessWidget {
           ),
           Row(
             children: [
-              Image.asset(
-                'assets/images/add.png',
-                width: 16,
+              GestureDetector(
+                onTap: () {
+                  cartProvider.addQuantity(cart.id);
+                },
+                child: Image.asset(
+                  'assets/images/add.png',
+                  width: 16,
+                ),
               ),
               SizedBox(
                 height: 2,
               ),
               Text(
-                '2',
+                cart.quantity.toString(),
                 style:
                     primaryTextStyle.copyWith(fontWeight: medium, fontSize: 12),
               ),
               SizedBox(
                 height: 2,
               ),
-              Image.asset(
-                'assets/images/minus.png',
-                width: 16,
+              GestureDetector(
+                onTap: () {
+                  cartProvider.reduceQuantity(cart.id);
+                },
+                child: Image.asset(
+                  'assets/images/minus.png',
+                  width: 16,
+                ),
               ),
               SizedBox(
                 width: 4,

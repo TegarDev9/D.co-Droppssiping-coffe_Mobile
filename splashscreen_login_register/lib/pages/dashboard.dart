@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:login_register/pages/Drawwer.dart';
 import 'package:login_register/pages/category_page.dart';
 import 'package:login_register/pages/chat_page.dart';
-import 'package:login_register/pages/favorite_page.dart';
+
 import 'package:login_register/pages/home_page.dart';
 import 'package:login_register/pages/profile_page.dart';
+import 'package:login_register/pages/whishlist_page.dart';
 import 'package:login_register/shared/shared.dart';
 
 class MainPage extends StatefulWidget {
@@ -86,7 +87,7 @@ class _MainPageState extends State<MainPage> {
           return ChatPage();
           break;
         case 3:
-          return favoritePage();
+          return WhishlistPage();
           break;
         case 4:
           return ProfilePage();

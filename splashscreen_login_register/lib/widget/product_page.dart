@@ -5,8 +5,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:login_register/models/product_model.dart';
 import 'package:login_register/pages/checkout_page.dart';
+import 'package:login_register/providers/cart_provider.dart';
+import 'package:login_register/providers/wishlist_provider.dart';
 import 'package:login_register/shared/shared.dart';
 import 'package:login_register/widget/checkoutcard_card.dart';
+import 'package:provider/provider.dart';
 
 class ProductPage extends StatefulWidget {
   final productModel product;
@@ -22,9 +25,11 @@ class _ProductPageState extends State<ProductPage> {
   ];
 
   int currentIndex = 0;
-  bool isWhihlist = false;
+
   @override
   Widget build(BuildContext context) {
+    WishlistProvider wishlistProvider = Provider.of<WishlistProvider>(context);
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
     Future<void> showSuccessDialog() async {
       return showDialog(
         context: context,
@@ -76,7 +81,7 @@ class _ProductPageState extends State<ProductPage> {
                     height: 44,
                     child: TextButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/checkout');
+                        Navigator.pushNamed(context, '/cart');
                       },
                       style: TextButton.styleFrom(
                         backgroundColor: primaryColor,
@@ -188,7 +193,7 @@ class _ProductPageState extends State<ProductPage> {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: images.map((e) {
+            children: widget.product.galleries!.map((e) {
               index++;
               return indicator(index);
             }).toList(),
@@ -227,7 +232,6 @@ class _ProductPageState extends State<ProductPage> {
                       children: [
                         Text(
                           widget.product.name,
-                          // 'Kopi Beras',
                           style: dangerTextStyle.copyWith(
                             fontSize: 18,
                             fontWeight: semiBold,
@@ -245,11 +249,9 @@ class _ProductPageState extends State<ProductPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      setState(() {
-                        isWhihlist = !isWhihlist;
-                      });
+                      wishlistProvider.setProduct(widget.product);
 
-                      if (isWhihlist) {
+                      if (wishlistProvider.isWishlist(widget.product)) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             backgroundColor: secondaryColor,
@@ -260,23 +262,21 @@ class _ProductPageState extends State<ProductPage> {
                           ),
                         );
                       } else {
-                        if (isWhihlist) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              backgroundColor: Signout,
-                              content: Text(
-                                'Has been remove from the wishlist',
-                                textAlign: TextAlign.center,
-                              ),
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: Signout,
+                            content: Text(
+                              'Has been remove from the wishlist',
+                              textAlign: TextAlign.center,
                             ),
-                          );
-                        }
+                          ),
+                        );
                       }
                     },
                     child: Image.asset(
-                      isWhihlist
-                          ? 'assets/button_whist.png'
-                          : 'assets/images/whish_icon.png',
+                      wishlistProvider.isWishlist(widget.product)
+                          ? 'assets/images/favorite1.png'
+                          : 'assets/images/favorite2.png',
                       width: 26,
                       height: 26,
                     ),
@@ -377,6 +377,7 @@ class _ProductPageState extends State<ProductPage> {
                         height: 54,
                         child: TextButton(
                           onPressed: () {
+                            cartProvider.addCart(widget.product);
                             showSuccessDialog();
                           },
                           style: TextButton.styleFrom(
@@ -386,7 +387,7 @@ class _ProductPageState extends State<ProductPage> {
                             backgroundColor: dangerColor,
                           ),
                           child: Text(
-                            '${widget.product.harga}    |   Add to cart',
+                            '${widget.product.harga}   |   Add to cart',
                             style: primaryTextStyle.copyWith(
                               fontSize: 16,
                               fontWeight: semiBold,

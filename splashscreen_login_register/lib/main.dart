@@ -9,11 +9,13 @@ import 'package:login_register/pages/edit_profile_page.dart';
 import 'package:login_register/pages/pages.dart';
 import 'package:login_register/pages/splash_page.dart';
 import 'package:login_register/providers/auth_provider.dart';
+import 'package:login_register/providers/cart_provider.dart';
 import 'package:login_register/providers/product_provider.dart';
+import 'package:login_register/providers/wishlist_provider.dart';
 import 'package:login_register/shared/shared.dart';
-import 'package:login_register/widget/cart2_card.dart';
-import 'package:login_register/widget/cart2_card.dart';
-import 'package:login_register/widget/cart3_card%20.dart';
+import 'package:login_register/widget/cart_card.dart';
+import 'package:login_register/widget/cart_card.dart';
+
 import 'package:login_register/widget/cart_page.dart';
 import 'package:login_register/widget/checkoutcard_card.dart';
 
@@ -38,6 +40,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => Productprovider(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => WishlistProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CartProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -53,9 +61,6 @@ class MyApp extends StatelessWidget {
           '/detail-chat': (context) => DetailChatPage(),
           '/Drawwer': (context) => DrawerScreen(),
           '/edit-profile': (context) => EditProfilePage(),
-          '/cart2': (context) => Cart2Card(),
-          '/cart3': (context) => Cart3Card(),
-          'whislist': (context) => WhislistCard(),
           '/cart': (context) => CartPage(),
           '/checkout': (context) => CheckoutPage(),
           '/checkoutcard': (context) => CheckoutCard(),
