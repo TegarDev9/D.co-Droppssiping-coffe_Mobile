@@ -1,276 +1,310 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+import 'package:login_register/providers/auth_provider.dart';
+import 'package:login_register/providers/cart_provider.dart';
+import 'package:login_register/providers/transaction_provider.dart';
+
 import 'package:login_register/shared/shared.dart';
 
 import 'package:login_register/widget/checkoutcard_card.dart';
+import 'package:provider/provider.dart';
 
-class CheckoutPage extends StatelessWidget {
+class CheckoutPage extends StatefulWidget {
+  const CheckoutPage({Key? key}) : super(key: key);
+
+  @override
+  State<CheckoutPage> createState() => _CheckoutPageState();
+}
+
+class _CheckoutPageState extends State<CheckoutPage> {
   @override
   Widget build(BuildContext context) {
-    Widget header() {
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
+
+    TransactionProvider transactionProvider =
+        Provider.of<TransactionProvider>(context);
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+
+    handleCheckout() async {
+      if (await transactionProvider.checkout(
+        authProvider.user.token!,
+        cartProvider.carts,
+        cartProvider.totalHarga(),
+      )) {
+        cartProvider.cart = [];
+        Navigator.pushNamedAndRemoveUntil(
+            context, '/checkout-success', (route) => false);
+      }
+    }
+
+    PreferredSizeWidget header() {
       return AppBar(
         backgroundColor: primaryColor,
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'Checkout Details',
+          "Checkout Details",
         ),
       );
     }
 
     Widget content() {
-      return Expanded(
-        child: Container(
-          color: primaryColor,
-          child: ListView(
-            padding: EdgeInsets.symmetric(
-              horizontal: defaultMargin,
+      return ListView(
+        padding: EdgeInsets.symmetric(
+          horizontal: defaultMargin,
+        ),
+        children: [
+          // NOTE : List Item
+          Container(
+            margin: EdgeInsets.only(top: defaultMargin),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                    children: cartProvider.carts
+                        .map(
+                          (cart) => CheckoutCard(cart),
+                        )
+                        .toList())
+              ],
             ),
-            children: [
-              Container(
-                margin: EdgeInsets.only(
-                  top: defaultMargin,
+          ),
+
+          // Note : Address Detail
+          Container(
+            margin: EdgeInsets.only(
+              top: defaultMargin,
+            ),
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: brownColor,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Address Details",
+                  style: primaryTextStyle.copyWith(
+                      fontSize: 16, fontWeight: medium),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [],
+                SizedBox(
+                  height: 12,
                 ),
-              ),
-              CheckoutCard(),
-              Container(
-                margin: EdgeInsets.only(
-                  top: defaultMargin,
-                ),
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: brownColor,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
                   children: [
-                    Text(
-                      'Address Details',
-                      style: primaryTextStyle.copyWith(
-                        fontSize: 16,
-                        fontWeight: medium,
-                      ),
+                    Column(
+                      children: [
+                        Image.asset(
+                          'assets/images/Store_icon.png',
+                          width: 40,
+                        ),
+                        Image.asset(
+                          'assets/images/line1.png',
+                          height: 30,
+                        ),
+                        Image.asset(
+                          'assets/images/Location Icon.png',
+                          width: 40,
+                        ),
+                      ],
                     ),
                     SizedBox(
-                      height: 12,
+                      width: 12,
                     ),
-                    Row(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/Store_icon.png',
-                              width: 40,
-                            ),
-                            Image.asset(
-                              'assets/images/line1.png',
-                              height: 30,
-                            ),
-                            Image.asset(
-                              'assets/images/Location Icon.png',
-                              width: 40,
-                            ),
-                          ],
+                        Text(
+                          "Store Location",
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 12,
+                            fontWeight: light,
+                          ),
+                        ),
+                        Text(
+                          "Sekarwangi",
+                          style: primaryTextStyle.copyWith(
+                            fontWeight: medium,
+                          ),
                         ),
                         SizedBox(
-                          width: 12,
+                          height: defaultMargin,
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Store Location ',
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 12,
-                                fontWeight: light,
-                              ),
-                            ),
-                            Text(
-                              'Sekarwangi',
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                            SizedBox(
-                              height: defaultMargin,
-                            ),
-                            Text(
-                              'Your Address ',
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 12,
-                                fontWeight: light,
-                              ),
-                            ),
-                            Text(
-                              'Sukowono',
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 15,
-                                fontWeight: medium,
-                              ),
-                            ),
-                          ],
-                        )
+                        Text(
+                          "Your Address",
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 12,
+                            fontWeight: light,
+                          ),
+                        ),
+                        Text(
+                          "sukowono",
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 15,
+                            fontWeight: medium,
+                          ),
+                        ),
                       ],
                     )
                   ],
+                )
+              ],
+            ),
+          ),
+
+          // Note: Payment Summary
+          Container(
+            margin: EdgeInsets.only(
+              top: defaultMargin,
+            ),
+            padding: EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: brownColor,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Payment Summary",
+                  style: primaryTextStyle.copyWith(
+                    fontSize: 16,
+                    fontWeight: medium,
+                  ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.only(
-                  top: defaultMargin,
+                SizedBox(
+                  height: 12,
                 ),
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: brownColor,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Payment Summary',
+                      'Product quantity',
                       style: primaryTextStyle.copyWith(
-                        fontSize: 16,
+                        fontSize: 12,
+                      ),
+                    ),
+                    Text(
+                      '${cartProvider.totalItems()} Sekarwangi',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 13,
+                        fontWeight: medium,
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 12,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Product price',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 12,
+                      ),
+                    ),
+                    Text(
+                      'Rp${cartProvider.totalHarga()}',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 12,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 12,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Shipping',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 12,
+                      ),
+                    ),
+                    Text(
+                      'Free',
+                      style: primaryTextStyle.copyWith(
+                        fontSize: 13,
                         fontWeight: medium,
                       ),
                     ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          ' Product Quality',
-                          style: primaryTextStyle.copyWith(
-                            fontSize: 12,
-                          ),
-                        ),
-                        Text(
-                          'Sekarwangi ',
-                          style: primaryTextStyle.copyWith(
-                            fontSize: 13,
-                            fontWeight: medium,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          ' Product price',
-                          style: primaryTextStyle.copyWith(
-                            fontSize: 12,
-                          ),
-                        ),
-                        Text(
-                          'Rp 105.000',
-                          style: primaryTextStyle.copyWith(
-                            fontSize: 13,
-                            fontWeight: medium,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          ' Shipping',
-                          style: primaryTextStyle.copyWith(
-                            fontSize: 12,
-                          ),
-                        ),
-                        Text(
-                          'Free ',
-                          style: primaryTextStyle.copyWith(
-                            fontSize: 13,
-                            fontWeight: medium,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Divider(
-                      thickness: 1,
-                      color: Color(0xff2E3141),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Total',
-                          style: treeTextStyle.copyWith(
-                            fontSize: 12,
-                            fontWeight: semiBold,
-                          ),
-                        ),
-                        Text(
-                          'Rp 105.000',
-                          style: treeTextStyle.copyWith(
-                            fontSize: 12,
-                            fontWeight: semiBold,
-                          ),
-                        ),
-                      ],
-                    )
                   ],
                 ),
-              ),
-              SizedBox(
-                height: defaultMargin,
-              ),
-              Container(
-                height: 50,
-                width: double.infinity,
-                margin: EdgeInsets.symmetric(
-                  vertical: defaultMargin,
+                SizedBox(
+                  height: 12,
                 ),
-                child: TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                    backgroundColor: AppbarTextColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: Text(
-                    'Checkout now',
-                    style: primaryTextStyle.copyWith(
-                      fontWeight: semiBold,
-                      fontSize: 16,
-                    ),
-                  ),
+                Divider(
+                  thickness: 1,
+                  color: Color(0xff2E3141),
                 ),
-              ),
-            ],
+                SizedBox(
+                  height: 12,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Total',
+                      style: treeTextStyle.copyWith(
+                        fontSize: 12,
+                        fontWeight: semiBold,
+                      ),
+                    ),
+                    Text(
+                      'Rp${cartProvider.totalHarga()}',
+                      // 'Rp${cartProvider.totalHarga()+10}',
+                      style: treeTextStyle.copyWith(
+                        fontSize: 12,
+                        fontWeight: semiBold,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
+
+          // Note: Checkout button
+          SizedBox(
+            height: defaultMargin,
+          ),
+
+          Container(
+            height: 50,
+            width: double.infinity,
+            margin: EdgeInsets.symmetric(
+              vertical: defaultMargin,
+            ),
+            child: TextButton(
+              onPressed: handleCheckout,
+              style: TextButton.styleFrom(
+                backgroundColor: AppbarTextColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+              child: Text(
+                "Checkout Now",
+                style: primaryTextStyle.copyWith(
+                  fontSize: 16,
+                  fontWeight: semiBold,
+                ),
+              ),
+            ),
+          )
+        ],
       );
     }
 
-    return Column(
-      children: [
-        header(),
-        content(),
-      ],
+    return Scaffold(
+      backgroundColor: primaryColor,
+      appBar: header(),
+      body: content(),
     );
   }
 }

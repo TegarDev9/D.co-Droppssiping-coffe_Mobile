@@ -11,7 +11,9 @@ import 'package:login_register/pages/splash_page.dart';
 import 'package:login_register/providers/auth_provider.dart';
 import 'package:login_register/providers/cart_provider.dart';
 import 'package:login_register/providers/product_provider.dart';
+import 'package:login_register/providers/transaction_provider.dart';
 import 'package:login_register/providers/wishlist_provider.dart';
+
 import 'package:login_register/shared/shared.dart';
 import 'package:login_register/widget/cart_card.dart';
 import 'package:login_register/widget/cart_card.dart';
@@ -46,6 +48,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => CartProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => TransactionProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -63,7 +68,6 @@ class MyApp extends StatelessWidget {
           '/edit-profile': (context) => EditProfilePage(),
           '/cart': (context) => CartPage(),
           '/checkout': (context) => CheckoutPage(),
-          '/checkoutcard': (context) => CheckoutCard(),
           '/checkout-success': (context) => CheckoutSuccessPage(),
         },
       ),
