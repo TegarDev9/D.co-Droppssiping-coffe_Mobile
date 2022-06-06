@@ -6,7 +6,7 @@ import 'package:login_register/pages/pages.dart';
 import 'package:http/http.dart' as http;
 
 class ProductService {
-  String baseUrl = 'http://192.168.1.4:8000/api';
+  String baseUrl = 'https://ws-tif.com/kel14/D.co/public/api';
 
   Future<List<productModel>> getProducts() async {
     var url = '$baseUrl/products';

@@ -27,8 +27,8 @@ class ProductTile extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: Image.asset(
-                // product!.galleries![0].url!,
-                'assets/images/product.png',
+                product!.galleries![0].url!,
+                // 'assets/images/product.png',
                 width: 100,
                 height: 100,
                 fit: BoxFit.cover,

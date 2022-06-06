@@ -60,7 +60,7 @@ class CartProvider with ChangeNotifier {
   totalHarga() {
     double total = 0;
     for (var item in _carts) {
-      total += (item.quantity * item.product.id);
+      total += (item.quantity * item.product.harga);
     }
     return total;
   }

@@ -56,7 +56,7 @@ class CartCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '35000',
+                      '${cart.product.harga}',
                       style: primaryTextStyle.copyWith(
                         fontSize: 12,
                       ),

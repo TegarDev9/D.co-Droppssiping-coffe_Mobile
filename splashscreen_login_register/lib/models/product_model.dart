@@ -1,10 +1,11 @@
+import 'package:flutter/gestures.dart';
 import 'package:login_register/models/category_model.dart';
 import 'package:login_register/models/gallery_model.dart';
 
 class productModel {
   late int id;
   late String name;
-  late String? harga;
+  late double harga;
   late String? deskripsi;
   late String? tags;
   late String? status;
@@ -31,7 +32,7 @@ class productModel {
   productModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
-    harga = json['harga'];
+    harga = double.parse(json['harga'].toString());
     deskripsi = json['deskripsi'];
 
     tags = json['tags'];
