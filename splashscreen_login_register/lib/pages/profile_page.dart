@@ -10,6 +10,49 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
     UserModel user = authProvider.user;
+    handleLogout() async {
+      AlertDialog alertDialog = AlertDialog(
+        title: const Text('Warning!!'),
+        content: const Text('Apakah anda yakin ingin keluar?'),
+        actions: [
+          TextButton(
+            child: const Text('Batal'),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          TextButton(
+              child: const Text('Yakin'),
+              onPressed: () async {
+                Navigator.pop(context);
+
+                if (await authProvider.logout(user.token!)) {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/welcome-pages', (route) => false);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Color.fromARGB(255, 186, 160, 13),
+                      content: const Text(
+                        'Berhasil Logout',
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: primaryTextColor,
+                      content: const Text(
+                        'Gagal Logout',
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  );
+                }
+              }),
+        ],
+      );
+      showDialog(context: context, builder: (context) => alertDialog);
+    }
+
     Widget header() {
       return AppBar(
         backgroundColor: brownColor,
@@ -164,10 +207,7 @@ class ProfilePage extends StatelessWidget {
               height: 30,
             ),
             GestureDetector(
-              onTap: () {
-                Navigator.pushNamedAndRemoveUntil(
-                    context, '/welcome-pages', (route) => false);
-              },
+              onTap: handleLogout,
               child: Row(
                 children: [
                   Image.asset(

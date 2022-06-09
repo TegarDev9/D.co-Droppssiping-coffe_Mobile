@@ -10,6 +10,58 @@ class EditProfilePage extends StatelessWidget {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
     UserModel user = authProvider.user;
 
+    TextEditingController nameController =
+        TextEditingController(text: user.nama);
+    TextEditingController usernameController =
+        TextEditingController(text: user.username);
+    TextEditingController emailController =
+        TextEditingController(text: user.email);
+    TextEditingController notelpController =
+        TextEditingController(text: user.no_telp);
+
+    handleEdit() async {
+      if (nameController.text.isEmpty ||
+          usernameController.text.isEmpty ||
+          emailController.text.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: primaryTextColor,
+            content: const Text(
+              'Isi kolom terlebih dahulu',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
+      } else if (await authProvider.update(
+        token: user.token.toString(),
+        name: nameController.text,
+        username: usernameController.text,
+        email: emailController.text,
+        notelp: notelpController.text,
+      )) {
+        Navigator.pushNamed(context, '/dashboard');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Color.fromARGB(255, 206, 224, 43),
+            content: const Text(
+              'Profil berhasil diperbarui',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: primaryTextColor,
+            content: const Text(
+              'Gagal Update Profil!',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
+      }
+    }
+
     PreferredSizeWidget header() {
       return AppBar(
         leading: IconButton(
@@ -31,7 +83,7 @@ class EditProfilePage extends StatelessWidget {
               Icons.check,
               color: primaryColor,
             ),
-            onPressed: () {},
+            onPressed: handleEdit,
           )
         ],
       );
@@ -52,6 +104,7 @@ class EditProfilePage extends StatelessWidget {
               ),
             ),
             TextFormField(
+              controller: nameController,
               decoration: InputDecoration(
                 hintText: "${user.nama}",
                 hintStyle: AppbarTextstyle,
@@ -83,6 +136,7 @@ class EditProfilePage extends StatelessWidget {
               ),
             ),
             TextFormField(
+              controller: usernameController,
               decoration: InputDecoration(
                 hintText: "@${user.username}",
                 hintStyle: AppbarTextstyle,
@@ -114,6 +168,7 @@ class EditProfilePage extends StatelessWidget {
               ),
             ),
             TextFormField(
+              controller: emailController,
               decoration: InputDecoration(
                 hintText: "${user.email}",
                 hintStyle: AppbarTextstyle,
@@ -145,6 +200,7 @@ class EditProfilePage extends StatelessWidget {
               ),
             ),
             TextFormField(
+              controller: notelpController,
               decoration: InputDecoration(
                 hintText: "${user.no_telp}",
                 hintStyle: AppbarTextstyle,
