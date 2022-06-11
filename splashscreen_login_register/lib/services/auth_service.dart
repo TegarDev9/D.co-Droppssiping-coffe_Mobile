@@ -73,37 +73,41 @@ class AuthService {
     }
   }
 
-  Future<UserModel> update({
-    var token,
-    String? name,
-    String? username,
-    String? email,
-    String? password,
-    String? notelp,
+  Future<UserModel> updateProfile({
+    required String nama,
+    required String username,
+    required String email,
+    required String no_telp,
+    required String password,
+    required String token,
   }) async {
     var url = '$baseUrl/userApi';
-    var body = jsonEncode({
-      'name': name,
-      'username': username,
-      'email': email,
-      'password': password,
-      'notelp': notelp,
-    });
+    var headers = {
+      'content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': token,
+    };
+    var body = jsonEncode(
+      {
+        'nama': nama,
+        'username': username,
+        'email': email,
+        'no_telp': no_telp,
+        'password': password,
+        'token': token,
+      },
+    );
 
     var response = await http.post(
       Uri.parse(url),
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': token,
-      },
+      headers: headers,
       body: body,
     );
+    print(response.body);
 
     if (response.statusCode == 200) {
-      AuthService().logout(token: token);
-
       var data = jsonDecode(response.body)['data'];
-      UserModel user = UserModel.fromJson(data['user']);
+      UserModel user = UserModel.fromJson(data['data']);
       user.token = 'Bearer ' + data['access_token'];
 
       return user;

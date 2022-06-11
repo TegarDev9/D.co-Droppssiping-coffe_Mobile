@@ -26,7 +26,7 @@ class CartModel {
   }
 
   getTotalharga() {
-    return product.harga! * quantity;
+    return product.harga * quantity;
   }
 }
 

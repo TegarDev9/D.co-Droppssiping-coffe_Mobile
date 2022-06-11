@@ -4,62 +4,68 @@ import 'package:login_register/providers/auth_provider.dart';
 import 'package:login_register/shared/shared.dart';
 import 'package:provider/provider.dart';
 
-class EditProfilePage extends StatelessWidget {
+class EditProfilePage extends StatefulWidget {
+  @override
+  State<EditProfilePage> createState() => _EditProfilePageState();
+}
+
+class _EditProfilePageState extends State<EditProfilePage> {
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     AuthProvider authProvider = Provider.of<AuthProvider>(context);
     UserModel user = authProvider.user;
 
-    TextEditingController nameController =
+    TextEditingController namaController =
         TextEditingController(text: user.nama);
     TextEditingController usernameController =
         TextEditingController(text: user.username);
     TextEditingController emailController =
         TextEditingController(text: user.email);
-    TextEditingController notelpController =
+    TextEditingController no_telpController =
         TextEditingController(text: user.no_telp);
+    TextEditingController passwordController =
+        TextEditingController(text: user.password);
+    TextEditingController tokenController =
+        TextEditingController(text: user.token);
 
-    handleEdit() async {
-      if (nameController.text.isEmpty ||
-          usernameController.text.isEmpty ||
-          emailController.text.isEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            backgroundColor: primaryTextColor,
-            content: const Text(
-              'Isi kolom terlebih dahulu',
-              textAlign: TextAlign.center,
-            ),
-          ),
-        );
-      } else if (await authProvider.update(
-        token: user.token.toString(),
-        name: nameController.text,
+    handleUpdateProfile() async {
+      setState(() {
+        isLoading = true;
+      });
+      if (await authProvider.updateProfile(
+        nama: namaController.text,
         username: usernameController.text,
         email: emailController.text,
-        notelp: notelpController.text,
+        token: tokenController.text,
+        no_telp: no_telpController.text,
+        password: passwordController.text,
       )) {
         Navigator.pushNamed(context, '/dashboard');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            backgroundColor: Color.fromARGB(255, 206, 224, 43),
+            backgroundColor: brownColor,
             content: const Text(
               'Profil berhasil diperbarui',
               textAlign: TextAlign.center,
             ),
           ),
-        );
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            backgroundColor: primaryTextColor,
-            content: const Text(
-              'Gagal Update Profil!',
-              textAlign: TextAlign.center,
-            ),
-          ),
+          // );
+          // } else {
+          // ScaffoldMessenger.of(context).showSnackBar(
+          //   SnackBar(
+          //     backgroundColor: brownColor,
+          //     content: const Text(
+          //       'Gagal Update Profil!',
+          //       textAlign: TextAlign.center,
+          //     ),
+          //   ),
         );
       }
+
+      setState(() {
+        isLoading = false;
+      });
     }
 
     PreferredSizeWidget header() {
@@ -83,7 +89,7 @@ class EditProfilePage extends StatelessWidget {
               Icons.check,
               color: primaryColor,
             ),
-            onPressed: handleEdit,
+            onPressed: handleUpdateProfile,
           )
         ],
       );
@@ -104,7 +110,7 @@ class EditProfilePage extends StatelessWidget {
               ),
             ),
             TextFormField(
-              controller: nameController,
+              controller: namaController,
               decoration: InputDecoration(
                 hintText: "${user.nama}",
                 hintStyle: AppbarTextstyle,
@@ -200,7 +206,7 @@ class EditProfilePage extends StatelessWidget {
               ),
             ),
             TextFormField(
-              controller: notelpController,
+              controller: no_telpController,
               decoration: InputDecoration(
                 hintText: "${user.no_telp}",
                 hintStyle: AppbarTextstyle,
