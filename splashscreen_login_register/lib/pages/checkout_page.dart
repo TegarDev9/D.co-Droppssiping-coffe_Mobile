@@ -6,7 +6,7 @@ import 'package:login_register/providers/transaction_provider.dart';
 
 import 'package:login_register/shared/shared.dart';
 
-import 'package:login_register/widget/checkoutcard_card.dart';
+import 'package:login_register/widget/checkout_card.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutPage extends StatefulWidget {

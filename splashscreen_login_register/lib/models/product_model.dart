@@ -1,10 +1,9 @@
-import 'package:flutter/gestures.dart';
 import 'package:login_register/models/category_model.dart';
 import 'package:login_register/models/gallery_model.dart';
 
 class productModel {
-  late int id;
-  late String name;
+  late int? id;
+  late String? name;
   late double harga;
   late String? deskripsi;
   late String? tags;

@@ -5,13 +5,13 @@ import 'package:login_register/pages/pages.dart';
 import 'package:http/http.dart' as http;
 
 class AuthService {
-  String baseUrl = 'http://192.168.1.4:8000/api';
+  String baseUrl = 'https://ws-tif.com/kel14/D.co/public/api';
 
   Future<UserModel> register({
     String? nama,
     String? username,
     String? email,
-    String? notelp,
+    String? no_telp,
     String? password,
     String? token,
   }) async {
@@ -21,7 +21,7 @@ class AuthService {
       'nama': nama,
       'username': username,
       'email': email,
-      'no_telp': notelp,
+      'no_telp': no_telp,
       'password': password,
       'token': token,
     });
@@ -36,7 +36,7 @@ class AuthService {
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body)['data'];
       UserModel user = UserModel.fromJson(data['user']);
-      user.token = 'Bearer' + data['access_token'];
+      user.token = 'Bearer ' + data['access_token'];
 
       return user;
     } else {
@@ -64,8 +64,9 @@ class AuthService {
 
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body)['data'];
+      // data['user']['token'] = 'Bearer ' + data['access_token'];
       UserModel user = UserModel.fromJson(data['user']);
-      user.token = 'Bearer' + data['access_token'];
+      user.token = 'Bearer ' + data['access_token'];
 
       return user;
     } else {
@@ -129,8 +130,6 @@ class AuthService {
       Uri.parse(url),
       headers: headers,
     );
-
-    // print(response.body);
 
     if (response.statusCode == 200) {
       return true;

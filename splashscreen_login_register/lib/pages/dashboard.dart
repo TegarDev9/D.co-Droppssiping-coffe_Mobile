@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_register/pages/Drawwer.dart';
-import 'package:login_register/pages/category_page.dart';
-import 'package:login_register/pages/chat_page.dart';
+import 'package:login_register/pages/RiwayatPemesanan.dart';
 
 import 'package:login_register/pages/home_page.dart';
 import 'package:login_register/pages/profile_page.dart';
@@ -47,14 +46,7 @@ class _MainPageState extends State<MainPage> {
                   'assets/images/categori_icon.png',
                   width: 20,
                 ),
-                label: 'Category',
-              ),
-              BottomNavigationBarItem(
-                icon: Image.asset(
-                  'assets/images/chat_icon.png',
-                  width: 20,
-                ),
-                label: 'Chat',
+                label: 'Riwayat pemesanan',
               ),
               BottomNavigationBarItem(
                 icon: Image.asset(
@@ -81,15 +73,13 @@ class _MainPageState extends State<MainPage> {
         case 0:
           return HomePage();
         case 1:
-          return CategoryPage();
+          return RiwayatPemesanan();
           break;
+
         case 2:
-          return ChatPage();
-          break;
-        case 3:
           return WhishlistPage();
           break;
-        case 4:
+        case 3:
           return ProfilePage();
           break;
         default:

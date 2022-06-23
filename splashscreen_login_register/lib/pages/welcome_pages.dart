@@ -26,7 +26,7 @@ class _WellcomePageState extends State<WellcomePage> {
         nama: namaController.text,
         username: usernameController.text,
         email: emailController.text,
-        notelp: phoneController.text,
+        no_telp: phoneController.text,
         password: passwordController.text,
       )) {
         Navigator.pushNamed(context, '/dashboard');
@@ -192,26 +192,25 @@ class _WellcomePageState extends State<WellcomePage> {
                                               ),
 
                                               TextFormField(
-                                                  controller: namaController,
-                                                  style:
-                                                      dangerTextStyle.copyWith(
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          fontSize: 14,
-                                                          color: dangerColor),
-                                                  decoration: InputDecoration(
-                                                      border:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(30),
-                                                      ),
-                                                      hintText:
-                                                          "Enter your Nama",
-                                                      labelText: "Nama Lengkap",
-                                                      suffixIcon: InkWell(
-                                                          child: Icon(Icons
-                                                              .person_outline)))),
+                                                controller: namaController,
+                                                style: dangerTextStyle.copyWith(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 14,
+                                                    color: dangerColor),
+                                                decoration: InputDecoration(
+                                                  border: OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            30),
+                                                  ),
+                                                  hintText: "Enter your Nama",
+                                                  labelText: "Nama Lengkap",
+                                                  suffixIcon: InkWell(
+                                                    child: Icon(
+                                                        Icons.person_outline),
+                                                  ),
+                                                ),
+                                              ),
                                               SizedBox(
                                                 height: 9,
                                               ),
@@ -293,54 +292,68 @@ class _WellcomePageState extends State<WellcomePage> {
                                               ),
 
                                               TextFormField(
-                                                  obscureText: true,
-                                                  style:
-                                                      dangerTextStyle.copyWith(
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          fontSize: 14,
-                                                          color: dangerColor),
-                                                  decoration: InputDecoration(
-                                                      border:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(30),
-                                                      ),
-                                                      hintText:
-                                                          "Your password must be at least 6 characters",
-                                                      labelText: "Password",
-                                                      suffixIcon: InkWell(
-                                                          child: Icon(Icons
-                                                              .lock_outline)))),
+                                                obscureText: _isHiddenPassword,
+                                                style: dangerTextStyle.copyWith(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 14,
+                                                    color: dangerColor),
+                                                decoration: InputDecoration(
+                                                  border: OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            30),
+                                                  ),
+                                                  hintText:
+                                                      "Your password must be at least 6 characters",
+                                                  labelText: "Password",
+                                                  suffixIcon: InkWell(
+                                                    child: Icon(_isHiddenPassword
+                                                        ? Icons.visibility
+                                                        : Icons.visibility_off),
+                                                    onTap: () {
+                                                      setState(() {
+                                                        _isHiddenPassword =
+                                                            !_isHiddenPassword;
+                                                      });
+                                                    },
+                                                  ),
+                                                ),
+                                              ),
                                               SizedBox(
                                                 height: 9,
                                               ),
 
                                               TextFormField(
-                                                  obscureText: true,
-                                                  controller:
-                                                      passwordController,
-                                                  style:
-                                                      dangerTextStyle.copyWith(
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          fontSize: 14,
-                                                          color: dangerColor),
-                                                  decoration: InputDecoration(
-                                                      border:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(30),
-                                                      ),
-                                                      hintText:
-                                                          "Please re-enter your password",
-                                                      labelText:
-                                                          "Confirm password",
-                                                      suffixIcon: InkWell(
-                                                          child: Icon(Icons
-                                                              .lock_outline)))),
+                                                obscureText:
+                                                    _isHiddenConfirmPassword,
+                                                controller: passwordController,
+                                                style: dangerTextStyle.copyWith(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 14,
+                                                    color: dangerColor),
+                                                decoration: InputDecoration(
+                                                  border: OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            30),
+                                                  ),
+                                                  hintText:
+                                                      "Please re-enter your password",
+                                                  labelText: "Confirm password",
+                                                  suffixIcon: InkWell(
+                                                    child: Icon(
+                                                        _isHiddenConfirmPassword
+                                                            ? Icons.lock_outline
+                                                            : Icons.lock_clock),
+                                                    onTap: () {
+                                                      setState(() {
+                                                        _isHiddenConfirmPassword =
+                                                            !_isHiddenConfirmPassword;
+                                                      });
+                                                    },
+                                                  ),
+                                                ),
+                                              ),
                                               SizedBox(
                                                 height: 29,
                                               ),
@@ -562,7 +575,8 @@ class _WellcomePageState extends State<WellcomePage> {
                                               ),
 
                                               TextFormField(
-                                                  obscureText: true,
+                                                  obscureText:
+                                                      _isHiddenPassword,
                                                   controller:
                                                       passwordController,
                                                   style:
@@ -572,18 +586,29 @@ class _WellcomePageState extends State<WellcomePage> {
                                                           fontSize: 14,
                                                           color: dangerColor),
                                                   decoration: InputDecoration(
-                                                      border:
-                                                          OutlineInputBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(30),
-                                                      ),
-                                                      hintText:
-                                                          "Your password must be at least 6 characters",
-                                                      labelText: "Password",
-                                                      suffixIcon: InkWell(
-                                                          child: Icon(Icons
-                                                              .lock_outline)))),
+                                                    border: OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              30),
+                                                    ),
+                                                    hintText:
+                                                        "Your password must be at least 6 characters",
+                                                    labelText: "Password",
+                                                    suffixIcon: InkWell(
+                                                      child: Icon(
+                                                          _isHiddenPassword
+                                                              ? Icons
+                                                                  .lock_outline
+                                                              : Icons
+                                                                  .lock_clock),
+                                                      onTap: () {
+                                                        setState(() {
+                                                          _isHiddenPassword =
+                                                              !_isHiddenPassword;
+                                                        });
+                                                      },
+                                                    ),
+                                                  )),
                                               SizedBox(
                                                 height: 14,
                                               ),

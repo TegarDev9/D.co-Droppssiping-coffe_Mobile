@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:login_register/models/cart_model.dart';
 import 'package:login_register/shared/shared.dart';
 
-class CheckoutCard extends StatelessWidget {
+class TransactionCard extends StatelessWidget {
   CartModel cart;
-  CheckoutCard(this.cart);
+  TransactionCard(this.cart);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,9 +27,8 @@ class CheckoutCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               image: DecorationImage(
-                image: AssetImage(
-                  'assets/images/product.png',
-                  // cart.product.galleries[0].url,
+                image: NetworkImage(
+                  cart.product.galleries![0].url!,
                 ),
               ),
             ),
@@ -42,7 +41,7 @@ class CheckoutCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  cart.product.name,
+                  cart.product.name!,
                   style: whiteTextStyle.copyWith(
                     fontSize: 12,
                     fontWeight: semiBold,

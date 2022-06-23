@@ -4,27 +4,30 @@ import 'package:http/http.dart' as http;
 import 'package:login_register/models/cart_model.dart';
 
 class TransactionService {
-  String baseUrl = 'http://192.168.1.4:8000/api';
+  String baseUrl = 'https://ws-tif.com/kel14/D.co/public/api';
 
   Future<bool> checkout(
-      String token, List<CartModel> carts, double totalharga) async {
+    String token,
+    List<CartModel> carts,
+    double totalharga,
+  ) async {
     var url = "$baseUrl/checkout";
     var headers = {
-      'Content-Type': 'application/json',
-      'Authorization': token,
+      "Content-Type": "application/json",
+      "Authorization": token,
     };
 
     var body = jsonEncode({
-      'address': "Sukowono",
+      'alamat': "Sukowono",
       'items': carts
           .map((cart) => {
                 'id': cart.product.id,
-                'quantity': cart.quantity,
+                'jumlah': cart.quantity,
               })
           .toList(),
-      'status': "PENDING",
+      'status': 1,
       'total_harga': totalharga,
-      'shipping_price': 0,
+      'biaya_pengiriman': 0,
     });
 
     print(headers);

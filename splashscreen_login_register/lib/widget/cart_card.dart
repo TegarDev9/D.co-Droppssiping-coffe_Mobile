@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login_register/models/cart_model.dart';
 import 'package:login_register/providers/cart_provider.dart';
-import 'dart:html';
+
 import 'package:login_register/shared/shared.dart';
 import 'package:provider/provider.dart';
 
@@ -35,8 +35,9 @@ class CartCard extends StatelessWidget {
                     12,
                   ),
                   image: DecorationImage(
-                    image: AssetImage(
-                      'assets/images/product.png',
+                    image: NetworkImage(
+                      // 'assets/images/product.png',
+                      cart.product.galleries![0].url!,
                     ),
                   ),
                 ),
@@ -49,14 +50,14 @@ class CartCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      cart.product.name,
+                      cart.product.name!,
                       style: primaryTextStyle.copyWith(
                         fontWeight: semiBold,
                         fontSize: 12,
                       ),
                     ),
                     Text(
-                      '${cart.product.harga}',
+                      'Rp.${cart.product.harga}',
                       style: primaryTextStyle.copyWith(
                         fontSize: 12,
                       ),

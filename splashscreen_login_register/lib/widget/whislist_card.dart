@@ -35,7 +35,7 @@ class WhislistCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
             child: Image.asset(
-              //  product.galleries![0].url!,
+              // //  product.galleries![0].url!,
               'assets/images/product 5.png',
               width: 60,
             ),
@@ -48,7 +48,7 @@ class WhislistCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  product.name,
+                  product.name!,
                   style: primaryTextStyle.copyWith(
                     fontWeight: semiBold,
                   ),

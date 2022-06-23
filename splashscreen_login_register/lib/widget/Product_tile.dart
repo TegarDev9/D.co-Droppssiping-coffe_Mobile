@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:login_register/models/product_model.dart';
 import 'package:login_register/shared/shared.dart';
+import 'package:login_register/widget/product_page.dart';
 
 class ProductTile extends StatelessWidget {
   final productModel product;
@@ -10,7 +11,12 @@ class ProductTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, '/product');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductPage(product),
+          ),
+        );
       },
       child: Container(
         margin: EdgeInsets.only(
@@ -26,9 +32,9 @@ class ProductTile extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
+              child: Image.network(
                 product.galleries![0].url!,
-                // 'assets/images/product.png',
+                //'assets/images/product.png',
                 width: 100,
                 height: 100,
                 fit: BoxFit.cover,
@@ -42,7 +48,7 @@ class ProductTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    product.name,
+                    product.name!,
                     style: whiteTextStyle.copyWith(
                       fontSize: 14,
                     ),
@@ -52,7 +58,6 @@ class ProductTile extends StatelessWidget {
                   ),
                   Text(
                     product.deskripsi!,
-                    // 'Kopi beras adalah biji kopi kering yang sudah dibuang kulit tanduk dan kulit arinya.',
                     style: primaryTextStyle.copyWith(
                       fontSize: 10,
                       fontWeight: semiBold,
@@ -61,13 +66,11 @@ class ProductTile extends StatelessWidget {
                   SizedBox(
                     height: 2,
                   ),
-                  Text(
-                    '\Rp${product.harga}',
-                    style: primaryTextStyle.copyWith(
-                      fontWeight: semiBold,
-                      fontSize: 12,
-                    ),
-                  ),
+                  Text('\Rp${product.harga}',
+                      style: primaryTextStyle.copyWith(
+                        fontWeight: semiBold,
+                        fontSize: 12,
+                      )),
                 ],
               ),
             ),

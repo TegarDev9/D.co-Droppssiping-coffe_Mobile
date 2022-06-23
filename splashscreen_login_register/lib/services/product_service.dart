@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:html';
 
 import 'package:login_register/models/product_model.dart';
 import 'package:login_register/pages/pages.dart';

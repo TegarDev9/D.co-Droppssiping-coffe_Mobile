@@ -15,7 +15,7 @@ class AuthProvider with ChangeNotifier {
     String? nama,
     String? username,
     String? email,
-    String? notelp,
+    String? no_telp,
     String? password,
     String? token,
   }) async {
@@ -24,13 +24,13 @@ class AuthProvider with ChangeNotifier {
         nama: nama,
         username: username,
         email: email,
-        notelp: notelp,
+        no_telp: no_telp,
         password: password,
       );
       debugPrint(nama);
       debugPrint(username);
       debugPrint(email);
-      debugPrint(notelp);
+      debugPrint(no_telp);
       debugPrint(password);
       _user = user;
       return true;

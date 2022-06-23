@@ -4,14 +4,13 @@ import 'package:login_register/shared/shared.dart';
 class CheckoutSuccessPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget header() {
+    PreferredSizeWidget header() {
       return AppBar(
-        backgroundColor: primaryColor,
+        backgroundColor: AppbarTextColor,
         centerTitle: true,
         title: Text(
           'Checkout Success',
         ),
-        elevation: 0,
       );
     }
 
@@ -22,13 +21,14 @@ class CheckoutSuccessPage extends StatelessWidget {
           children: [
             Image.asset(
               'assets/images/shope_icon.png',
+              color: AppbarTextColor,
               width: 80,
             ),
             SizedBox(
               height: 20,
             ),
             Text(
-              'You made a transaction',
+              "You made a transaction",
               style: brownTextStyle.copyWith(
                 fontSize: 16,
                 fontWeight: medium,
@@ -38,7 +38,7 @@ class CheckoutSuccessPage extends StatelessWidget {
               height: 12,
             ),
             Text(
-              'Stay at home while we\n prepare your order',
+              'Stay at home while we \nprepare your Coffe',
               style: brownTextStyle,
               textAlign: TextAlign.center,
             ),
@@ -54,7 +54,7 @@ class CheckoutSuccessPage extends StatelessWidget {
                       context, '/dashboard', (route) => false);
                 },
                 style: TextButton.styleFrom(
-                  backgroundColor: secondaryColor,
+                  backgroundColor: primaryColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -75,7 +75,10 @@ class CheckoutSuccessPage extends StatelessWidget {
                 top: 12,
               ),
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/transaction-page', (route) => false);
+                },
                 style: TextButton.styleFrom(
                   backgroundColor: brownColor,
                   shape: RoundedRectangleBorder(
@@ -83,24 +86,52 @@ class CheckoutSuccessPage extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'View m order',
+                  'pay now',
                   style: whiteTextStyle.copyWith(
                     fontSize: 16,
                     fontWeight: medium,
                   ),
                 ),
               ),
-            )
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            Container(
+              width: 196,
+              height: 44,
+              margin: EdgeInsets.only(
+                top: 12,
+              ),
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/transaction-page', (route) => false);
+                },
+                style: TextButton.styleFrom(
+                  backgroundColor: brownColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: Text(
+                  'View My Order',
+                  style: whiteTextStyle.copyWith(
+                    fontSize: 16,
+                    fontWeight: medium,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       );
     }
 
-    return Column(
-      children: [
-        header(),
-        content(),
-      ],
+    return Scaffold(
+      backgroundColor: primaryColor,
+      appBar: header(),
+      body: content(),
     );
   }
 }

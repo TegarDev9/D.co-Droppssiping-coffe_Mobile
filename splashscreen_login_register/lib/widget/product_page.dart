@@ -1,15 +1,15 @@
-import 'dart:html';
-import 'dart:js';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:login_register/models/product_model.dart';
 import 'package:login_register/pages/checkout_page.dart';
 import 'package:login_register/providers/cart_provider.dart';
 import 'package:login_register/providers/wishlist_provider.dart';
 import 'package:login_register/shared/shared.dart';
-import 'package:login_register/widget/checkoutcard_card.dart';
+import 'package:login_register/widget/checkout_card.dart';
 import 'package:provider/provider.dart';
+
+import 'package:url_launcher/url_launcher.dart';
 
 class ProductPage extends StatefulWidget {
   final productModel product;
@@ -104,6 +104,18 @@ class _ProductPageState extends State<ProductPage> {
           ),
         ),
       );
+    }
+
+    openwhatsapp() async {
+      var whatsapp = "+6285171691521";
+      var whatsappURl_android =
+          "whatsapp://send?phone=" + whatsapp + "&text=hello";
+      if (await canLaunch(whatsappURl_android)) {
+        await launch(whatsappURl_android);
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: new Text("whatsapp no installed")));
+      }
     }
 
     Widget indicator(int index) {
@@ -231,7 +243,7 @@ class _ProductPageState extends State<ProductPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.product.name,
+                          widget.product.name!,
                           style: dangerTextStyle.copyWith(
                             fontSize: 18,
                             fontWeight: semiBold,
@@ -346,10 +358,10 @@ class _ProductPageState extends State<ProductPage> {
                 ],
               ),
             ),
-            // NOTE: BUTTONS
+            // NOTE: BUTTON
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, 'detail-chat');
+                openwhatsapp();
               },
               child: Container(
                 width: double.infinity,
@@ -364,7 +376,7 @@ class _ProductPageState extends State<ProductPage> {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(
-                            'assets/images/Button_Chat.png',
+                            'assets/images/Button_chat.png',
                           ),
                         ),
                       ),
