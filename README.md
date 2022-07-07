@@ -1,21 +1,24 @@
 # Kelompok_2_ProjectAkhir_MobileFramework_TIFB
 Tugas Akhir semester 4
 #Login
-![login](https://user-images.githubusercontent.com/86245238/177677411-ef53a112-e4d4-4f43-8662-98afce820449.png width="48")
+
 #Menu
-![Menu](https://user-images.githubusercontent.com/86245238/177677477-95244661-e189-4796-82bc-1454c66a9c60.png)
+
 #Profile
-![Profile](https://user-images.githubusercontent.com/86245238/177677560-1b459391-acf2-45e3-b564-533e039c451e.png)
+
 #Whislist
-![whislit](https://user-images.githubusercontent.com/86245238/177677609-bfb05a26-db34-4160-9aa7-c95f5e944698.png)
+
 #Checkout
-![Checkout](https://user-images.githubusercontent.com/86245238/177677663-0a13c5de-2898-43ac-8bc5-5a7ef611a8c1.png)
+![Checkout](https://user-images.githubusercontent.com/86245238/177679098-a3fc503a-50f1-4149-89a1-4fcfac09ede3.png)
+
 #Cart list
-![Cart list](https://user-images.githubusercontent.com/86245238/177677692-f2612451-beac-4fe8-9a2f-b9bdee7c6d9c.png)
+![Cart list](https://user-images.githubusercontent.com/86245238/177679164-59a32505-1117-4c75-8304-eed1c01612f5.png)
+
 #checkout detail
-![checkout detail](https://user-images.githubusercontent.com/86245238/177677727-e0b8c5c3-db3e-4fbd-95b9-644228049e4d.png)
+![checkout detail](https://user-images.githubusercontent.com/86245238/177679067-73d2c77c-4c64-43fd-8450-01b29be1346c.png)
+
 #checkout suskses
-![checout suskses](https://user-images.githubusercontent.com/86245238/177677766-5762627a-74ac-4973-a162-80944e6ce297.png)
+
 
 
 
