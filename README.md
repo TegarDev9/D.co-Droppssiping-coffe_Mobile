@@ -1,7 +1,7 @@
 # Kelompok_2_ProjectAkhir_MobileFramework_TIFB
 Tugas Akhir semester 4
 #Login
-![login](https://user-images.githubusercontent.com/86245238/177677411-ef53a112-e4d4-4f43-8662-98afce820449.png)
+![login](https://user-images.githubusercontent.com/86245238/177677411-ef53a112-e4d4-4f43-8662-98afce820449.png width="48")
 #Menu
 ![Menu](https://user-images.githubusercontent.com/86245238/177677477-95244661-e189-4796-82bc-1454c66a9c60.png)
 #Profile
